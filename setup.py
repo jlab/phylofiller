@@ -9,7 +9,7 @@ from setuptools import find_packages, setup
 # https://github.com/mitsuhiko/flask/blob/master/setup.py
 _version_re = re.compile(r'__version__\s+=\s+(.*)')
 
-with open('ggmap/__init__.py', 'rb') as f:
+with open('phylofiller/__init__.py', 'rb') as f:
     hit = _version_re.search(f.read().decode('utf-8')).group(1)
     version = str(ast.literal_eval(hit))
 

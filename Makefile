@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------
-# Copyright (c) 2015--, ggmap development team.
+# Copyright (c) 2015--, phylofiller development team.
 #
 # Distributed under the terms of the Modified BSD License.
 #
