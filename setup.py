@@ -22,7 +22,7 @@ classifiers = [
     'Topic :: Scientific/Engineering :: Bio-Informatics',
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
     'Operating System :: Unix',
     'Operating System :: POSIX',
     'Operating System :: MacOS :: MacOS X',
