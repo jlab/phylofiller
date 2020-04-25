@@ -58,17 +58,26 @@ class IOTests(TestCase):
             "one additional sequence, should result in different MD5")
 
     def test_read_metadata(self):
-        with self.assertRaisesRegex(ValueError, 'Conflicting column name\(s\) in your metadata: "__line_number" please rename!'):
+        with self.assertRaisesRegex(
+                ValueError,
+                'Conflicting column name\\(s\\) in your metadata: '
+                '"__line_number" please rename!'):
             read_metadata(get_data_path("meta_sysColName.tsv"))
 
-        with self.assertRaisesRegex(ValueError, 'Header of first column must be "organism"'):
+        with self.assertRaisesRegex(
+                ValueError,
+                'Header of first column must be "organism"'):
             read_metadata(get_data_path("meta_wrongIndexName.tsv"))
 
-        with self.assertRaisesRegex(ValueError, '2 organisms have been re-defined in your metadata. Please fix!'):
+        with self.assertRaisesRegex(
+                ValueError,
+                '2 organisms have been re-defined in your metadata. '
+                'Please fix!'):
             read_metadata(get_data_path("meta_ambigOrganisms.tsv"))
 
         # config = {'projects': {'fungi'}}
-        # with self.assertRaisesRegex(ValueError, "No 'assemblies' defined in configuration for project 'fungi'"):
+        # with self.assertRaisesRegex(ValueError,
+        # "No 'assemblies' defined in configuration for project 'fungi'"):
         #     validate_input_configuration(config)
 
 
