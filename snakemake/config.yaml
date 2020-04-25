@@ -1,0 +1,12 @@
+stepnames:
+  augustus: 005_augustus
+
+dirs:
+  intermediate: "Intermediate/"
+  benchmarks: "Benchmarks/"
+  logs: "Logs/"
+
+projects:
+  fungi:
+    assembly_prefix: /Daten/PhyloFiller/Input/LCB-Genomes/
+    fp_metadata: data/projects/fungi.tsv

@@ -1,0 +1,13 @@
+rule augustus:
+    input:
+        assembly=lambda wildcards: META.loc[wildcards.organism, 'fp_assembly']
+    output:
+        "{prefix}%s%s/{organism}.gff" % (config['dirs']['intermediate'], config['stepnames']['augustus'])
+    log:
+        "{prefix}%s%s/{organism}.log" % (config['dirs']['logs'], config['stepnames']['augustus'])
+    benchmark:
+        "{prefix}%s%s/{organism}.log" % (config['dirs']['benchmarks'], config['stepnames']['augustus'])
+    conda:
+        "../envs/augustus.yaml"
+    shell:
+        "augustus '{input}' --species=saccharomyces_cerevisiae_S288C 2> '{log}' > '{output}'"
