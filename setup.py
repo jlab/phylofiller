@@ -29,13 +29,13 @@ classifiers = [
     'Operating System :: Microsoft :: Windows']
 
 
-description = 'PhyloPhiller: '
+description = 'PhyloFiller: '
 with open('README.md') as f:
     long_description = f.read()
 
 keywords = '',
 
-setup(name='phylophiller',
+setup(name='phylofiller',
       version=version,
       license='BSD',
       description=description,
