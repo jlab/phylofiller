@@ -9,5 +9,7 @@ rule augustus:
         "{prefix}%s%s/{organism}.log" % (config['dirs']['benchmarks'], config['stepnames']['augustus'])
     conda:
         "../envs/augustus.yaml"
+    params:
+        species="saccharomyces_cerevisiae_S288C"
     shell:
-        "augustus '{input}' --species=saccharomyces_cerevisiae_S288C 2> '{log}' > '{output}'"
+        "augustus '{input}' --species={params.species} 2> '{log}' > '{output}'"
