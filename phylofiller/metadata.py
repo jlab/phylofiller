@@ -1,4 +1,7 @@
+import os
+
 import pandas as pd
+
 
 COL_ORGANISM = 'organism'
 COL_FP_ASSEMBLY = 'fp_assembly'
@@ -90,7 +93,7 @@ def get_augustus_reference_species(organism: str, meta: pd.DataFrame,
 
     # if defined in config.yaml, obtain project wise default species
     if prj_config is not None:
-        ref_species = prj_config.get(CFG_KEY_AUGUSTUS, None).get(
+        ref_species = prj_config.get(CFG_KEY_AUGUSTUS, dict()).get(
             CFG_KEY_AUGUSTUS_REFERENCE_SPECIES, None)
 
     if (COL_AUGUSTUS_REF_SPECIES in meta.columns) and (organism in meta.index):
