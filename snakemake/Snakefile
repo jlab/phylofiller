@@ -1,4 +1,5 @@
 from phylofiller.io import *
+from phylofiller.metadata import *
 
 configfile: "snakemake/config.yaml"
 
