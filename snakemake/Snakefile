@@ -5,7 +5,6 @@ configfile: "snakemake/config.yaml"
 
 PROJECT = 'fungi'
 META = read_metadata(config['projects'][PROJECT]['fp_metadata'], fp_assemblyprefix=config['projects'][PROJECT]['assembly_prefix'])
-#print(META)
 
 include: "rules/snake_annotations"
 
@@ -13,6 +12,6 @@ rule all:
     input:
         lambda wildcards: ['%s%s%s/%s.gff' % (wildcards.prefix, config['dirs']['intermediate'], config['stepnames']['augustus'], organism) for organism in META.index]
     output:
-        "{prefix}/%s.complete" % PROJECT
+        "{prefix}%s.complete" % PROJECT
     shell:
         'echo "done" > {output}'
