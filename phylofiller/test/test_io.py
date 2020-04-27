@@ -2,14 +2,13 @@ from unittest import TestCase, main
 
 from skbio.util import get_data_path
 
-from phylofiller.io import get_assembly_checksum, read_metadata
+from phylofiller.io import get_assembly_checksum,
 
 
 class IOTests(TestCase):
     def setUp(self):
         self.fp_assembly = get_data_path('assembly.fasta')
         self.exp_md5 = '1b89479f6bbae9a684b75b71e0cb492e'
-        self.fp_metadata = get_data_path('meta.tsv')
 
     def tearDown(self):
         pass
@@ -56,29 +55,6 @@ class IOTests(TestCase):
         self.assertNotEqual(
             self.exp_md5, obs_md5,
             "one additional sequence, should result in different MD5")
-
-    def test_read_metadata(self):
-        with self.assertRaisesRegex(
-                ValueError,
-                'Conflicting column name\\(s\\) in your metadata: '
-                '"__line_number" please rename!'):
-            read_metadata(get_data_path("meta_sysColName.tsv"))
-
-        with self.assertRaisesRegex(
-                ValueError,
-                'Header of first column must be "organism"'):
-            read_metadata(get_data_path("meta_wrongIndexName.tsv"))
-
-        with self.assertRaisesRegex(
-                ValueError,
-                '2 organisms have been re-defined in your metadata. '
-                'Please fix!'):
-            read_metadata(get_data_path("meta_ambigOrganisms.tsv"))
-
-        # config = {'projects': {'fungi'}}
-        # with self.assertRaisesRegex(ValueError,
-        # "No 'assemblies' defined in configuration for project 'fungi'"):
-        #     validate_input_configuration(config)
 
 
 if __name__ == '__main__':
