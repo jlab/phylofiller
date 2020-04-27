@@ -11,7 +11,7 @@
 
     "augustus" :
     {
-      "mem" : "8GB",
+      "mem" : "3GB",
       "ppn" : "1",
       "time" : "02:59:59",
     },
