@@ -2,7 +2,7 @@ from unittest import TestCase, main
 
 from skbio.util import get_data_path
 
-from phylofiller.metadata import *
+from phylofiller.metadata import read_metadata, get_augustus_reference_species
 
 
 class MetadataTests(TestCase):
@@ -36,25 +36,32 @@ class MetadataTests(TestCase):
         #     validate_input_configuration(config)
 
     def test_get_augustus_reference_species(self):
-        meta = read_metadata(get_data_path('meta.tsv'), skip_file_exists_test=True)
+        meta = read_metadata(
+            get_data_path('meta.tsv'), skip_file_exists_test=True)
         organism = "Aspergillus sydowii"
         with self.assertRaisesRegex(
                 ValueError,
-                "Could not determine reference species for organism '%s'" % organism):
+                "Could not determine reference species for organism '%s'" %
+                organism):
             get_augustus_reference_species(organism, meta, None)
 
         exp = 'kurt'
-        obs = get_augustus_reference_species(organism, meta, {'augustus': {'default_reference_species': 'kurt'}})
-        self.assertEqual(exp, obs, 'Project wide reference species not recovered.')
+        obs = get_augustus_reference_species(organism, meta, {'augustus': {
+            'default_reference_species': 'kurt'}})
+        self.assertEqual(
+            exp, obs, 'Project wide reference species not recovered.')
 
-        meta = read_metadata(get_data_path('meta_refspec.tsv'), skip_file_exists_test=True)
+        meta = read_metadata(
+            get_data_path('meta_refspec.tsv'), skip_file_exists_test=True)
         exp = 'Aspergillus nidulans'
         obs = get_augustus_reference_species(organism, meta, None)
         self.assertEqual(exp, obs, 'Metadata reference species not recovered.')
 
         exp = 'Aspergillus nidulans'
-        obs = get_augustus_reference_species(organism, meta,  {'augustus': {'default_reference_species': 'kurt'}})
-        self.assertEqual(exp, obs, "Metadata does not have precedence over config")
+        obs = get_augustus_reference_species(organism, meta,  {'augustus': {
+            'default_reference_species': 'kurt'}})
+        self.assertEqual(
+            exp, obs, "Metadata does not have precedence over config")
 
 
 if __name__ == '__main__':

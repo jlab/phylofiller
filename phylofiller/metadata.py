@@ -11,7 +11,8 @@ CFG_KEY_AUGUSTUS = 'augustus'
 CFG_KEY_AUGUSTUS_REFERENCE_SPECIES = 'default_reference_species'
 
 
-def read_metadata(fp_metadata: str, fp_assemblyprefix: str = None, skip_file_exists_test=False):
+def read_metadata(fp_metadata: str, fp_assemblyprefix: str = None,
+                  skip_file_exists_test=False):
     """.
 
     Parameters
@@ -73,7 +74,7 @@ def read_metadata(fp_metadata: str, fp_assemblyprefix: str = None, skip_file_exi
 
 
 def get_augustus_reference_species(organism: str, meta: pd.DataFrame,
-                                   prj_config: dict=None):
+                                   prj_config: dict = None):
     """Return reference species for organism as used in augustus.
 
     Species can be defined in two ways:

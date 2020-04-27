@@ -1,8 +1,6 @@
 import hashlib
-import os
 
 import skbio.io
-import pandas as pd
 
 
 def get_assembly_checksum(fp_assembly: str):

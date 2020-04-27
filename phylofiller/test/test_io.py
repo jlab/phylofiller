@@ -2,7 +2,7 @@ from unittest import TestCase, main
 
 from skbio.util import get_data_path
 
-from phylofiller.io import get_assembly_checksum,
+from phylofiller.io import get_assembly_checksum
 
 
 class IOTests(TestCase):
