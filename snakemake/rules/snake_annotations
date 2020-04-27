@@ -10,6 +10,6 @@ rule augustus:
     conda:
         "../envs/augustus.yaml"
     params:
-        species="saccharomyces_cerevisiae_S288C"
+        species=lambda wildcards: get_augustus_reference_species(wildcards.organism, META, config['projects'][PROJECT])
     shell:
         "augustus '{input}' --species={params.species} 2> '{log}' > '{output}'"
