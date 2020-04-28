@@ -30,10 +30,16 @@ class MetadataTests(TestCase):
                 'Please fix!'):
             read_metadata(get_data_path("meta_ambigOrganisms.tsv"))
 
-        # config = {'projects': {'fungi'}}
-        # with self.assertRaisesRegex(ValueError,
-        # "No 'assemblies' defined in configuration for project 'fungi'"):
-        #     validate_input_configuration(config)
+        obs = read_metadata(get_data_path("meta_localfiles.tsv"),
+                            fp_assemblyprefix="./")
+        self.assertTrue(obs['__file_exists'].all(),
+                        'Not all assembly files could be located.')
+
+        with self.assertRaisesRegex(
+                ValueError,
+                'Cannot find files for following assemblies'):
+            read_metadata(get_data_path('meta_onemissingfile.tsv'),
+                          fp_assemblyprefix="./")
 
     def test_get_augustus_reference_species(self):
         meta = read_metadata(
