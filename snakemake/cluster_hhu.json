@@ -1,0 +1,18 @@
+{
+    "__default__" :
+    {
+      "account" : "microbiomekohi",
+      "queue" : "default",
+      "nodes" : 1,
+      "time" : "00:59:59",
+      "mem" : "4GB",
+      "ppn" : "1",
+    },
+
+    "augustus" :
+    {
+      "mem" : "3GB",
+      "ppn" : "1",
+      "time" : "02:59:59",
+    },
+}
