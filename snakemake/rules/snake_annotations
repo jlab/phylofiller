@@ -6,7 +6,7 @@ rule augustus:
     log:
         "{prefix}%s%s/{organism}.log" % (config['dirs']['logs'], config['stepnames']['augustus'])
     benchmark:
-        "{prefix}%s%s/{organism}.log" % (config['dirs']['benchmarks'], config['stepnames']['augustus'])
+        "{prefix}%s%s/{organism}.benchmark" % (config['dirs']['benchmarks'], config['stepnames']['augustus'])
     conda:
         "../envs/augustus.yaml"
     params:
