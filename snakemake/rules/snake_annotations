@@ -12,4 +12,15 @@ rule augustus:
     params:
         species=lambda wildcards: get_augustus_reference_species(wildcards.organism, META, config['projects'][PROJECT])
     shell:
-        "augustus '{input}' --species={params.species} 2> '{log}' > '{output}'"
+        "augustus"
+        " '{input}'"
+        " --species={params.species}"
+        # softmasking: lower case nucleotids in input file will be interpreted
+        #  as repeats, i.e. ignored for prediciton:
+        #  https://github.com/nextgenusfs/augustus/blob/master/README.TXT
+        #  idea from FunGAP: https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bioinformatics/33/18/10.1093_bioinformatics_btx353/2/btx353_supplementary_2017-ms-fungap-supp_v1.4-ref.pdf?Expires=1591099856&Signature=EWfmgZl01UGDbxOGeNCMmorONRTyTfz6h2D8o5l-Lg9STK-Mo8fIIg8Q2sM3KpK2kdFLqm37SztCEn2zv-pGf0~C7L7tSORcE1vt3AXEGNulzzW3FQvMF1pP2YB1-NVkHXjWp9I7TQ1qQmXGcJHrbPRApR3hZQ1mBitH84hBcXgPs6XV~VREcDU8qja-00C12man~8VLjSD-ZboH2vg2WPlLG~~ftq7TmA4kCuijqsMMuAGwRl8P3lJrK06H6H607HU9C~xgBai7iDSWNqt9EjQjANiYrruPs7Xt4cO0-O4miHxtK~fWI-wtc2bhy5iCfEyPSI3YlsiW6L5mHyKIlQ__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA
+        " --softmasking=1"
+        # also inspired from FunGAP: predict genes independently on each strand, allow overlapping genes on opposite strands. This option is turned off by default.
+        " --singlestrand=true"
+        " 2> '{log}' "
+        " > '{output}'"
