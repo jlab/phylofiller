@@ -1,0 +1,19 @@
+dbcan2_dbfiles=['CAZyDB.07312018.fa', 'dbCAN-HMMdb-V8.txt', 'tcdb.fa', 'tf-1.hmm', 'tf-2.hmm', 'stp.hmm']
+
+rule setup_dbcan2:
+    output:
+        ["%s%s/dbcan2/%s" % (config['dirs']['prefix'], config['dirs']['references'], file) for file in dbcan2_dbfiles],
+    log:
+        "%s%s%s/dbcan2.log" % (config['dirs']['prefix'], config['dirs']['logs'], config['stepnames']['setup_references'])
+    benchmark:
+        "%s%s%s/dbcan2.benchmark" % (config['dirs']['prefix'], config['dirs']['benchmarks'], config['stepnames']['setup_references'])
+    conda:
+        "../envs/dbcan2.yaml"
+    params:
+        url='http://bcb.unl.edu/dbCAN2/download/',
+        dbfiles=" ".join(dbcan2_dbfiles),
+        testfiles=['EscheriaColiK12MG1655.fna', 'EscheriaColiK12MG1655.faa', 'EscheriaColiK12MG1655.gff']
+    shell:
+        #"pip install run-dbcan==2.0.6 --user 2> '{log}' && "
+        "for file in `echo '{params.dbfiles}'`; do wget {params.url}Databases/$file -O %s$file 2>> {log}; done" % ('%s%s%sdbcan2/' % (config['dirs']['prefix'], config['dirs']['references'], config['stepnames']['setup_references']))
+        #" && touch {output} 2> '{log}' > '{output}'"
