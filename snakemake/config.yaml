@@ -1,10 +1,13 @@
 stepnames:
+  setup_references: 000_setup_references
   augustus: 005_augustus
 
 dirs:
+  prefix: "/vol/jlab/Algorithms/PhyloFiller/"
   intermediate: "Intermediate/"
   benchmarks: "Benchmarks/"
   logs: "Logs/"
+  references: "References/"
 
 projects:
   fungi:
