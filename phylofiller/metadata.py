@@ -54,6 +54,15 @@ def read_metadata(fp_metadata: str, fp_assemblyprefix: str = None,
             'metadata. Please fix!\n%s' %
             (ambig_organisms.shape[0], str(ambig_organisms)))
 
+    organisms_withspace = [
+        organism for organism in  meta.index if ' ' in organism]
+    if len(organisms_withspace) > 0:
+        raise ValueError(
+            'The followin %i organism names contain whitespaces in their names'
+            '. This might break some unix based tools. Please replace with e.'
+            'g. "_":\n%s' % (len(organisms_withspace),
+                             "\n".join(organisms_withspace)))
+
     # add assembly prefix if given
     if fp_assemblyprefix is not None:
         meta[COL_FP_ASSEMBLY] = meta[COL_FP_ASSEMBLY].apply(

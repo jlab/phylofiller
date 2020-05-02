@@ -30,6 +30,11 @@ class MetadataTests(TestCase):
                 'Please fix!'):
             read_metadata(get_data_path("meta_ambigOrganisms.tsv"))
 
+        with self.assertRaisesRegex(
+                ValueError,
+                'The followin 2 organism names contain whitespaces'):
+            read_metadata(get_data_path("meta_whitespaces.tsv"))
+
         obs = read_metadata(get_data_path("meta_localfiles.tsv"),
                             fp_assemblyprefix="./")
         self.assertTrue(obs['__file_exists'].all(),
@@ -44,7 +49,7 @@ class MetadataTests(TestCase):
     def test_get_augustus_reference_species(self):
         meta = read_metadata(
             get_data_path('meta.tsv'), skip_file_exists_test=True)
-        organism = "Aspergillus sydowii"
+        organism = "Aspergillus_sydowii"
         with self.assertRaisesRegex(
                 ValueError,
                 "Could not determine reference species for organism '%s'" %
@@ -59,11 +64,11 @@ class MetadataTests(TestCase):
 
         meta = read_metadata(
             get_data_path('meta_refspec.tsv'), skip_file_exists_test=True)
-        exp = 'Aspergillus nidulans'
+        exp = 'Aspergillus_nidulans'
         obs = get_augustus_reference_species(organism, meta, None)
         self.assertEqual(exp, obs, 'Metadata reference species not recovered.')
 
-        exp = 'Aspergillus nidulans'
+        exp = 'Aspergillus_nidulans'
         obs = get_augustus_reference_species(organism, meta,  {'augustus': {
             'default_reference_species': 'kurt'}})
         self.assertEqual(
