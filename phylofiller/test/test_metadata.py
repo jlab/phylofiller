@@ -46,6 +46,13 @@ class MetadataTests(TestCase):
             read_metadata(get_data_path('meta_onemissingfile.tsv'),
                           fp_assemblyprefix="./")
 
+        with self.assertRaisesRegex(
+                ValueError,
+                'The following 3 filepaths to assemblies contain whitespaces'):
+            read_metadata(get_data_path('meta_fp_whitespace.tsv'),
+                          fp_assemblyprefix="./",
+                          skip_file_exists_test=True)
+
     def test_get_augustus_reference_species(self):
         meta = read_metadata(
             get_data_path('meta.tsv'), skip_file_exists_test=True)
