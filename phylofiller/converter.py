@@ -4,11 +4,14 @@ from Bio.Seq import Seq
 
 
 def easel_table2pd(lines) -> pd.DataFrame:
-    # easel is using a strange tab format. Instead of splitting via a single del. char like \t
-    # columns are aligned for visual inspection. Hints of column starts/ends are given by the
-    # second line with dashes, but it does not cover ALL columns :-/
-    # Thus, I here try to make a consistent annotation of column fields (-) and spearators (#)
-    line_fields = lines[1].replace('- ', '-#').replace(' -', '#-').replace(' ', '-')
+    # easel is using a strange tab format. Instead of splitting via a single
+    # del. char like \t columns are aligned for visual inspection. Hints of
+    # column starts/ends are given by the second line with dashes, but it does
+    # not cover ALL columns :-/
+    # Thus, I here try to make a consistent annotation of column fields (-)
+    # and spearators (#)
+    line_fields = lines[1].replace('- ', '-#').replace(' -', '#-').replace(
+        ' ', '-')
     # leading whitespaces most likely indicate NO empty column.
     # Thus, I add these positions to the first real column.
     if line_fields.startswith('#'):
@@ -35,7 +38,10 @@ def easel_table2pd(lines) -> pd.DataFrame:
                 row.append(line[start-1:stop].strip())
         rows.append(row)
 
-    table = pd.DataFrame(data=rows[1:], columns=rows[0], index=range(len(rows)-1))
+    table = pd.DataFrame(
+        data=rows[1:],
+        columns=rows[0],
+        index=range(len(rows)-1))
 
     return table
 
@@ -73,7 +79,7 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                 model_clen = line.split()[-1].split('=')[-1].replace(']', '')
             elif line.startswith('>> '):
                 # next three lines will be an overview table
-                hit_info =  easel_table2pd(lines[line_number+1:line_number+3+1])
+                hit_info = easel_table2pd(lines[line_number+1:line_number+3+1])
 
                 # target name is in the >> line
                 hit_info['target name'] = line[3:].strip()
@@ -83,11 +89,13 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                 target_sequence = ""
                 while alignment_line_number + 2 < len(lines):
                     query_sequence += lines[alignment_line_number].split()[2]
-                    target_sequence += lines[alignment_line_number+2].split()[2]
+                    target_sequence += lines[
+                        alignment_line_number+2].split()[2]
                     alignment_line_number += 6
                     if lines[alignment_line_number-1].startswith('>> '):
                         break
-                    elif lines[alignment_line_number+1].startswith('Internal HMM-only pipeline statistics summary'):
+                    elif lines[alignment_line_number+1].startswith(
+                            'Internal HMM-only pipeline statistics summary'):
                         break
                 hit_info['query sequence'] = query_sequence
                 hit_info['target sequence'] = target_sequence
@@ -122,19 +130,10 @@ def create_CIGAR(row_reference: str, row_read: str) -> str:
     str: the CIGAR string
     """
     GAP = '-'
-    # from https://samtools.github.io/hts-specs/SAMv1.pdf
-    #OP  BAM   Description                                           Consumes Query Consumes Reference
-    #-------------------------------------------------------------------------------------------------
-    #M    0    alignment match (can be a sequence match or mismatch) yes            yes
-    #I    1    insertion to the reference                            yes            no
-    #D    2    deletion from the reference                           no             yes
-    #N    3    skipped region from the reference                     no             yes
-    #S    4    soft clipping (clipped sequences present inSEQ)       yes            no
-    #H    5    hard clipping (clipped sequences NOT present inSEQ)   no             no
-    #P    6    padding (silent deletion from padded reference)       no             no
-    #=    7    sequence match                                        yes            yes
-    #X    8    sequence mismatch                                     yes            yes
-    assert len(row_reference) == len(row_read), 'Reference and read string have different length.'
+    # see https://samtools.github.io/hts-specs/SAMv1.pdf for a definition
+    # of alignment operators
+    assert len(row_reference) == len(row_read), \
+        'Reference and read string have different length.'
     assert type(row_reference) == str, "Reference is not of type str."
     assert type(row_read) == str, "Read is not of type str."
 
@@ -148,7 +147,6 @@ def create_CIGAR(row_reference: str, row_read: str) -> str:
             char_read = GAP
 
         if (char_ref != GAP) and (char_read != GAP):
-            #operations.append('M')
             if char_ref == char_read:
                 operations.append('=')
             else:
@@ -185,24 +183,30 @@ def easle2sam(easel_data: pd.DataFrame) -> str:
 
     # convert T to U
     for field in ['query sequence', 'target sequence']:
-        hits[field] = hits[field].apply(lambda x: x.replace('U', 'T').replace('u', 't'))
+        hits[field] = hits[field].apply(lambda x: x.replace('U', 'T').replace(
+            'u', 't'))
 
     # add strand information
-    hits['strand'] = hits.iloc[:, 11].apply(lambda x: 'rev' if x[0] == '-' else 'fwd')
+    hits['strand'] = hits.iloc[:, 11].apply(
+        lambda x: 'rev' if x[0] == '-' else 'fwd')
 
     # reverse complement if hit is on reverse strand
     for idx in hits.index:
-        if (hits.loc[idx, 'seq from'] > hits.loc[idx, 'seq to']) and (hits.loc[idx, 'strand'] == 'rev'):
+        if (hits.loc[idx, 'seq from'] > hits.loc[idx, 'seq to']) and \
+           (hits.loc[idx, 'strand'] == 'rev'):
             for field in ['query sequence', 'target sequence']:
-                hits.loc[idx, field] = str(Seq(hits.loc[idx, field]).reverse_complement())
+                hits.loc[idx, field] = \
+                    str(Seq(hits.loc[idx, field]).reverse_complement())
             helpswap = hits.loc[idx, 'seq from']
             hits.loc[idx, 'seq from'] = hits.loc[idx, 'seq to']
             hits.loc[idx, 'seq to'] = helpswap
 
     # create CIGAR string
-    hits['cigar'] = hits.apply(lambda row: create_CIGAR(row['target sequence'], row['query sequence']), axis=1)
+    hits['cigar'] = hits.apply(lambda row: create_CIGAR(
+        row['target sequence'], row['query sequence']), axis=1)
 
-    # extend hit to model boundaries, for better visualization in genome browsers
+    # extend hit to model boundaries, for better visualization in genome
+    # browsers
     for idx in hits.index:
         leading = hits.loc[idx, 'mdl from'] - 1
         trailing = hits.loc[idx, 'model clen'] - hits.loc[idx, 'mdl to']
@@ -210,16 +214,19 @@ def easle2sam(easel_data: pd.DataFrame) -> str:
             leading, trailing = trailing, leading
         if leading > 0:
             hits.loc[idx, 'seq from'] -= (leading + 1)
-            hits.loc[idx, 'cigar'] = '1M%iD%s' % (leading, hits.loc[idx, 'cigar'])
-            hits.loc[idx, 'query sequence'] = '?%s' % hits.loc[idx, 'query sequence']
+            hits.loc[idx, 'cigar'] = '1M%iD%s' % (
+                leading, hits.loc[idx, 'cigar'])
+            hits.loc[idx, 'query sequence'] = \
+                '?%s' % hits.loc[idx, 'query sequence']
         if trailing > 0:
             hits.loc[idx, 'cigar'] += '%iD' % trailing
 
     # convert table into SAM formatted strings
     samrows = []
-    for i, (idx, hit) in enumerate(hits.sort_values(['target name', 'seq from']).iterrows()):
+    for i, (idx, hit) in enumerate(hits.sort_values([
+            'target name', 'seq from']).iterrows()):
         sam = []
-        sequence = hit['query sequence'].replace('-','').replace('.','')
+        sequence = hit['query sequence'].replace('-', '').replace('.', '')
         sam.append('%s:%i' % (hit['model name'], i))  # QNAME
         sam.append("0" if hit.iloc[11][0] == '+' else '16')  # FLAG
         sam.append(hit['target name'])  # RNAME
@@ -229,7 +236,7 @@ def easle2sam(easel_data: pd.DataFrame) -> str:
         sam.append('*')  # RNEXT
         sam.append(str(0))  # PNEXT
         sam.append(str(0))  # TLEN
-        sam.append(hit['query sequence'].replace('-','').replace('.',''))  # SEQ
+        sam.append(sequence)  # SEQ
         sam.append('*')  # QUAL
         sam.append('RG:Z:%s' % hit['software'])
         sam.append('CM:f:%f' % hit['score'])
