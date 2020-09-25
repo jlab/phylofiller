@@ -1,0 +1,35 @@
+#target name         accession query name                    accession mdl mdl from   mdl to seq from   seq to strand trunc pass   gc  bias  score   E-value inc description of target
+#------------------- --------- ----------------------------- --------- --- -------- -------- -------- -------- ------ ----- ---- ---- ----- ------ --------- --- ---------------------
+Scaffold6            -         FSSC_ITS+28S-rDNA--956-bp.fna -         hmm      710      930   284427   284630      +     -    6 0.44   0.1   84.6   4.2e-23 !   -
+Scaffold3            -         FSSC_ITS+28S-rDNA--956-bp.fna -         hmm      802      928  4687313  4687190      -     -    6 0.54   0.0   64.0     7e-17 !   -
+Scaffold1            -         FSSC_ITS+28S-rDNA--956-bp.fna -         hmm      752      808  1013790  1013850      +     -    6 0.39   0.0   16.6     0.016 ?   -
+Scaffold5            -         FSSC_ITS+28S-rDNA--956-bp.fna -         hmm      693      821  2222270  2222153      -     -    6 0.46   1.0   10.6       1.1 ?   -
+Scaffold2            -         FSSC_ITS+28S-rDNA--956-bp.fna -         hmm      756      861  3020655  3020767      +     -    6 0.58   0.7    8.2       5.7 ?   -
+Scaffold3            -         FSSC_RPB2--1588-bp.fna -         hmm        2      826  2966345  2965521      -     -    6 0.54   0.0  885.0  2.7e-265 !   -
+Scaffold3            -         FSSC_RPB2--1588-bp.fna -         hmm      787     1588  2965391  2964591      -     -    6 0.53   0.0  813.4  1.1e-243 !   -
+Scaffold4            -         FSSC_RPB2--1588-bp.fna -         hmm      828     1525  2315121  2315839      +     -    6 0.51   0.0  120.9   1.7e-34 !   -
+Scaffold6            -         FSSC_RPB2--1588-bp.fna -         hmm      761     1564  1337459  1336642      -     -    6 0.55   0.0   94.6   1.6e-26 !   -
+Scaffold4            -         FSSC_RPB2--1588-bp.fna -         hmm       17      320  2314349  2314665      +     -    6 0.53   0.0   33.1   5.9e-08 !   -
+Scaffold1            -         FSSC_RPB2--1588-bp.fna -         hmm      438      542  5920205  5920315      +     -    6 0.60   0.0   16.5    0.0059 !   -
+Scaffold4            -         FSSC_RPB2--1588-bp.fna -         hmm      551      715   478876   478690      -     -    6 0.55   0.1   13.9     0.037 ?   -
+Scaffold4            -         FSSC_RPB2--1588-bp.fna -         hmm      669      899  2314870  2315072      +     -    6 0.51   0.0   12.9     0.071 ?   -
+Scaffold4            -         FSSC_RPB2--1588-bp.fna -         hmm      421      600  3659261  3659088      -     -    6 0.56   0.0   10.8      0.31 ?   -
+Scaffold6            -         FSSC_RPB2--1588-bp.fna -         hmm       56      140  1338065  1337981      -     -    6 0.53   0.0    9.1         1 ?   -
+Scaffold2            -         FSSC_RPB2--1588-bp.fna -         hmm      426      595  3674449  3674606      +     -    6 0.59   0.8    8.3       1.7 ?   -
+Scaffold2            -         FSSC_TEF1-665-bp.fna -         hmm        1      632  6427210  6427837      +     -    6 0.54   0.1  642.5  2.6e-192 !   -
+Scaffold3            -         FSSC_TEF1-665-bp.fna -         hmm      468      568  4896877  4896777      -     -    6 0.53   0.0   16.1     0.042 ?   -
+Scaffold2            -         FSSC_TEF1-665-bp.fna -         hmm      438      541  3187913  3188016      +     -    6 0.54   0.0   15.9     0.048 ?   -
+Scaffold7            -         FSSC_TEF1-665-bp.fna -         hmm       78      309  2145448  2145215      -     -    6 0.54   0.0   14.1      0.17 ?   -
+Scaffold7            -         FSSC_TEF1-665-bp.fna -         hmm      298      505   573210   573407      +     -    6 0.51   0.0   12.4      0.56 ?   -
+Scaffold1            -         FSSC_TEF1-665-bp.fna -         hmm      150      293  6008452  6008603      +     -    6 0.57   0.0    9.3       4.9 ?   -
+Scaffold1            -         FSSC_TEF1-665-bp.fna -         hmm       55      249  6008632  6008801      +     -    6 0.62   0.1    8.3       9.7 ?   -
+#
+# Program:         cmsearch
+# Version:         1.1.2 (July 2016)
+# Pipeline mode:   SEARCH
+# Query file:      Markergenes/FSSC/allFSSC.cm
+# Target file:     Sequences_Fusarium/taxid_99000016/FW16.genome.fna
+# Option settings: /usr/lib/infernal/cmsearch --tblout dev_tab --cpu 4 Markergenes/FSSC/allFSSC.cm Sequences_Fusarium/taxid_99000016/FW16.genome.fna 
+# Current dir:     /vol/jlab/Analyses/Fusarium_Gand/tmp_Workdir
+# Date:            Fri Sep 25 09:45:11 2020
+# [ok]
