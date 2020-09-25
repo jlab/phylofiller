@@ -1,8 +1,9 @@
 import pandas as pd
+from itertools import groupby
 from Bio.Seq import Seq
 
 
-def easel_table2pd(lines):
+def easel_table2pd(lines) -> pd.DataFrame:
     # easel is using a strange tab format. Instead of splitting via a single del. char like \t
     # columns are aligned for visual inspection. Hints of column starts/ends are given by the
     # second line with dashes, but it does not cover ALL columns :-/
@@ -39,7 +40,18 @@ def easel_table2pd(lines):
     return table
 
 
-def parse_easel_output(fp_input: str):
+def parse_easel_output(fp_input: str) -> pd.DataFrame:
+    """Parses Infernal (soon also Hmmer) as a pandas DataFrame.
+
+    Parameters
+    ----------
+    fp_input : str
+        Filepath to Infernal output file.
+
+    Returns
+    -------
+    Pandas.DataFrame holding all information of the infernal run.
+    """
     program_info = dict()
     with open(fp_input, 'r') as f:
         lines = f.readlines()
@@ -92,9 +104,23 @@ def parse_easel_output(fp_input: str):
     return hits
 
 
-def create_CIGAR(row_reference: str, row_read: str):
-    from itertools import groupby
+def create_CIGAR(row_reference: str, row_read: str) -> str:
+    """Given reference and read alignment row, convert into CIGAR string.
 
+    Note: result is NOT symmetric!
+
+    Parameters
+    ----------
+    row_reference : str
+        The alignment row for the reference, e.g. the genome
+    row_read : str
+        The alignment row for the read, e.g. a true Illumina read or the
+        Infernal model consensus sequence.
+
+    Returns
+    -------
+    str: the CIGAR string
+    """
     GAP = '-'
     # from https://samtools.github.io/hts-specs/SAMv1.pdf
     #OP  BAM   Description                                           Consumes Query Consumes Reference
@@ -136,7 +162,18 @@ def create_CIGAR(row_reference: str, row_read: str):
     return ''.join((map(lambda x: '%i%s' % (x[1], x[0]), runs)))
 
 
-def easle2sam(easel_data: pd.DataFrame):
+def easle2sam(easel_data: pd.DataFrame) -> str:
+    """Converts Infernal output in pd.DataFrame format into SAM string.
+
+    Parameters
+    ----------
+    easel_data : pd.DataFrame
+        The result of parse_easel_output.
+
+    Returns
+    -------
+    Infernal hits in SAM format as a str.
+    """
     # convert datatypes
     hits = easel_data.copy()
     for field in ['mdl from', 'mdl to', 'seq from', 'seq to', 'model clen']:
