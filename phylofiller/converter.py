@@ -104,7 +104,12 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                 hit_info['model clen'] = model_clen
                 hits.append(hit_info)
 
-    hits = pd.concat(hits)
+    # handle situations with zero hits
+    if len(hits) > 0:
+        hits = pd.concat(hits)
+    else:
+        hits = pd.DataFrame()
+
     for field in program_info.keys():
         hits[field] = program_info[field]
     hits.index = range(hits.shape[0])

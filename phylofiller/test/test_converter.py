@@ -21,6 +21,7 @@ class IOTests(TestCase):
     def setUp(self):
         self.fp_infernal = get_data_path('easel2sam/fw16_fssc.cm.out')
         self.fp_sam = get_data_path('easel2sam/fw16_fssc.sam')
+        self.fp_nohit = get_data_path('easel2sam/nohit.cm_out')
 
     def tearDown(self):
         pass
@@ -37,6 +38,9 @@ class IOTests(TestCase):
         with open(get_data_path('easel2sam/exp_parse_easle_output.txt')) as f:
             exp = ''.join(f.readlines())
         assert_frame_equal(_str2pd(exp), obs)
+
+        obs = parse_easel_output(self.fp_nohit)
+        self.assertEqual(obs.shape[0], 0)
 
     def test_easel_table2pd(self):
         obs = easel_table2pd(
