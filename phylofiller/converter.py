@@ -1,6 +1,7 @@
 import pandas as pd
 from itertools import groupby
 from Bio.Seq import Seq
+import collections
 
 
 def easel_table2pd(lines) -> pd.DataFrame:
@@ -248,3 +249,81 @@ def easle2sam(easel_data: pd.DataFrame) -> str:
         samrows.append('\t'.join(sam))
 
     return '\n'.join(samrows)+"\n"
+
+
+def kreport2feature(fp_input, rank='Genus') -> pd.DataFrame:
+    RANKS = collections.OrderedDict({
+        'Unclassified': 'U',
+        'Root': 'R',
+        #  'Domain': 'D',
+        'Kingdom': 'D',  # SMJ: count not find examples with K lines in reports
+        'Phylum': 'P',
+        'Class': 'C',
+        'Order': 'O',
+        'Family': 'F',
+        'Genus': 'G',
+        'Species': 'S'})
+    """
+    https://github.com/DerrickWood/kraken2/wiki/Manual#
+    sample-report-output-format
+    1. Percentage of fragments covered by the clade rooted at this taxon
+    2. Number of fragments covered by the clade rooted at this taxon
+    3. Number of fragments assigned directly to this taxon
+    4. A rank code, indicating (U)nclassified, (R)oot, (D)omain, (K)ingdom,
+       (P)hylum, (C)lass, (O)rder, (F)amily, (G)enus, or (S)pecies. Taxa that
+       are not at any of these 10 ranks have a rank code that is formed by
+       using the rank code of the closest ancestor rank with a number
+       indicating the distance from that rank. E.g., "G2" is a rank code
+       indicating a taxon is between genus and species and the grandparent
+       taxon is at the genus rank.
+    5. NCBI taxonomic ID number
+    6. Indented scientific name
+
+    """
+    assert (rank in RANKS.keys()) or rank is None
+
+    report = pd.read_csv(
+        fp_input, sep="\t", header=None,
+        names=['rel.abund.', '#reads_clade', '#reads_taxon', 'rank',
+               'taxid', 'scientific name'])
+
+    # determine lineage for major ranks and taxids
+    last_level = -1
+    curr_lineage = []
+    curr_taxids = []
+    res = []
+    res_taxids = []
+    for i, (_, row) in enumerate(report.iterrows()):
+        if row['rank'] not in RANKS.values():
+            res.append(None)
+            res_taxids.append(None)
+            continue
+        if (row['rank'] == 'U') and (row['scientific name'] == 'unclassified'):
+            res.append(row['scientific name'])
+            res_taxids.append(row['taxid'])
+            continue
+
+        rank_level = list(RANKS.values()).index(row['rank'])
+        rank_name = '%s__%s' % (
+            list(RANKS.values())[rank_level].lower().replace('d', 'k'),
+            row['scientific name'].strip())
+        rank_taxid = row['taxid']
+        if rank_level > last_level:
+            curr_lineage.append(rank_name)
+            curr_taxids.append(rank_taxid)
+        elif rank_level == last_level:
+            curr_lineage[-1] = rank_name
+            curr_taxids[-1] = rank_taxid
+        else:
+            curr_lineage = curr_lineage[:rank_level-1] + [rank_name]
+            curr_taxids = curr_taxids[:rank_level-1] + [rank_taxid]
+        res.append(';'.join(curr_lineage))
+        res_taxids.append(curr_taxids)
+        last_level = rank_level
+    report['lineage'] = res
+    report['taxid_lineage'] = res_taxids
+
+    if rank is not None:
+        report = report[report['rank'] == RANKS[rank]]
+
+    return report
