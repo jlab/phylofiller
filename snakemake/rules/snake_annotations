@@ -24,3 +24,40 @@ rule augustus:
         " --singlestrand=true"
         " 2> '{log}' "
         " > '{output}'"
+
+RM_DB_FILEENDINGS = ["nhr", "nin", "nnd", "nni", "nog", "nsq", "translation"]
+rule repeatmodeler_builddatabase:
+    input:
+        assembly=lambda wildcards: META.loc[wildcards.organism, 'fp_assembly']
+    output:
+        ["{prefix}%s%s/{organism}.%s" % (config['dirs']['intermediate'], config['stepnames']['repeatmodeler_builddatabase'], fileending) for fileending in RM_DB_FILEENDINGS]
+    log:
+        "{prefix}%s%s/{organism}.log" % (config['dirs']['logs'], config['stepnames']['repeatmodeler_builddatabase'])
+    benchmark:
+        "{prefix}%s%s/{organism}.benchmark" % (config['dirs']['benchmarks'], config['stepnames']['repeatmodeler_builddatabase'])
+    conda:
+        "../envs/repeatmodeler.yaml"
+    params:
+        fp_output=lambda wildcards: '%s%s%s/%s' % (wildcards.prefix, config['dirs']['intermediate'], config['stepnames']['repeatmodeler_builddatabase'], wildcards.organism)
+    shell:
+        "BuildDatabase -name {params.fp_output} -engine ncbi {input} 2> {log} 1>&2"
+
+rule repeatmodeler_run:
+    input:
+        #assembly=lambda wildcards: META.loc[wildcards.organism, 'fp_assembly']
+        ["{prefix}%s%s/{organism}.%s" % (config['dirs']['intermediate'], config['stepnames']['repeatmodeler_builddatabase'], fileending) for fileending in RM_DB_FILEENDINGS]
+    output:
+        "{prefix}%s%s/{organism}.stefan" % (config['dirs']['intermediate'], config['stepnames']['repeatmodeler_run'])
+    log:
+        "{prefix}%s%s/{organism}.log" % (config['dirs']['logs'], config['stepnames']['repeatmodeler_run'])
+    benchmark:
+        "{prefix}%s%s/{organism}.benchmark" % (config['dirs']['benchmarks'], config['stepnames']['repeatmodeler_run'])
+    conda:
+        "../envs/repeatmodeler.yaml"
+    params:
+        fp_database=lambda wildcards: '%s%s%s/%s' % (wildcards.prefix, config['dirs']['intermediate'], config['stepnames']['repeatmodeler_builddatabase'], wildcards.organism)
+    threads:
+        4
+    shell:
+        "cd `dirname {output}` 2> {log}"
+        " && RepeatModeler -engine ncbi -pa {threads} -srand 42 -database {params.fp_database} 2>> {log} 1>&2"
