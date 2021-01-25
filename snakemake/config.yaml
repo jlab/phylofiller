@@ -1,6 +1,8 @@
 stepnames:
   setup_references: 000_setup_references
   augustus: 005_augustus
+  repeatmodeler_builddatabase: 010_repeatmodeler_builddatabase
+  repeatmodeler_run: 011_repeatmodeler_run
 
 dirs:
   prefix: "/vol/jlab/Algorithms/PhyloFiller/"
