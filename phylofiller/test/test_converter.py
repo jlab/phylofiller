@@ -6,7 +6,8 @@ import pandas as pd
 from pandas.testing import assert_frame_equal
 
 from phylofiller.converter import (
-    easel_table2pd, parse_easel_output, create_CIGAR, easle2sam)
+    easel_table2pd, parse_easel_output, create_CIGAR, easle2sam,
+    kreport2feature)
 
 
 def _str2pd(input):
@@ -145,6 +146,22 @@ class IOTests(TestCase):
             exp = ''.join(f.readlines())
             obs = easle2sam(parse_easel_output(self.fp_infernal))
             self.assertEqual(exp, obs)
+
+
+class KrakenTests(TestCase):
+    def setUp(self):
+        self.fp_report = get_data_path('KB0060_c.k2report')
+
+    def tearDown(self):
+        pass
+
+    def test_kreport2feature(self):
+        obs = kreport2feature(self.fp_report, rank="Genus")
+        self.assertEqual(obs.shape[0], 145)
+        self.assertEqual(obs['#reads_clade'].sum(), 12538)
+
+        obs = kreport2feature(self.fp_report, rank=None)
+        self.assertEqual(obs.shape[0], 778)
 
 
 if __name__ == '__main__':
