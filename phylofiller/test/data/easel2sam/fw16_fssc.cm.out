@@ -1,0 +1,810 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.2 (July 2016)
+# Copyright (C) 2016 Howard Hughes Medical Institute.
+# Freely distributed under a BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         Markergenes/FSSC/allFSSC.cm
+# target sequence database:              Sequences_Fusarium/taxid_99000016/FW16.genome.fna
+# tabular output of hits:                dev_tab
+# number of worker threads:              4 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       FSSC_ITS+28S-rDNA--956-bp.fna  [CLEN=930]
+Hit scores:
+ rank     E-value  score  bias  sequence    start     end   mdl trunc   gc  description
+ ----   --------- ------ -----  --------- ------- -------   --- ----- ----  -----------
+  (1) !   4.2e-23   84.6   0.1  Scaffold6  284427  284630 + hmm     - 0.44  -
+  (2) !     7e-17   64.0   0.0  Scaffold3 4687313 4687190 - hmm     - 0.54  -
+ ------ inclusion threshold ------
+  (3) ?     0.016   16.6   0.0  Scaffold1 1013790 1013850 + hmm     - 0.39  -
+  (4) ?       1.1   10.6   1.0  Scaffold5 2222270 2222153 - hmm     - 0.46  -
+  (5) ?       5.7    8.2   0.7  Scaffold2 3020655 3020767 + hmm     - 0.58  -
+
+
+Hit alignments:
+>> Scaffold6  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !   4.2e-23   84.6   0.1 hmm      710      930 .]      284427      284630 + .. 0.86     - 0.44
+
+                                       :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_ITS+28S-rDNA--956-bp.fna    710 AGAGACCGAUAGCGCACAAGUAGAGUGAUCGAAAGAUGAAAAGAACUUUGAAAAGAGAGUUAAAaAGUACGUGA 783   
+                                       A A  CCGAU G G AC A UA   UGAUC AAAGAUGAA AGAACUU   AAAGAGAG UAA aAGUACGUGA
+                      Scaffold6 284427 AAAUGCCGAUGGUGUACGAUUA--CUGAUCAAAAGAUGAA-AGAACUUAAGAAAGAGAGCUAA-AAGUACGUGA 284496
+                                       3345689999999999988875..699**********975.79****************9986.58*******9 PP
+
+                                       :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_ITS+28S-rDNA--956-bp.fna    784 AAUUGUUGAAAGGGAAGCGCUUGUGACCAGACUUGGGCUuGGUUGAUCAUCCgGGGUUCUCCCuGGUGCACUCU 857   
+                                           GUUGAAAG GAA CGCUUG  AC AGA UUGGGCUuGGUUGAU      G G UC C  + GUGCACUCU
+                      Scaffold6 284497 G---GUUGAAAG-GAAACGCUUGGCACUAGAUUUGGGCUUGGUUGAUU-----GAGGUCCCUUCAGUGCACUCU 284561
+                                       7...56677765.6888****************************985.....556678888899*****9875 PP
+
+                                       ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_ITS+28S-rDNA--956-bp.fna    858 UCCGGCccAGGCCAGCAUCAGUUcGCCcuGGGGGAuAAAGGCuuCGGGAAuGUGGCUCuCUCCGGGGAGUGUU 930   
+                                          GGCc A GC  G AU A  U+GCC   GGG AuAAAGGCuu  GG AuGU G UCuCUCC GGGAGUGUU
+                      Scaffold6 284562 ---GGCCUAUGCUGGUAUUAACUUGCCUAAGGGAAUAAAGGCUUG-GGGAUGUAGUUCUCUCCUGGGAGUGUU 284630
+                                       ...89************************************9875.55689*******************985 PP
+
+>> Scaffold3  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (2) !     7e-17   64.0   0.0 hmm      802      928 ..     4687313     4687190 - .. 0.91     - 0.54
+
+                                        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_ITS+28S-rDNA--956-bp.fna     802 GCUUGUGACCAGACUUGGGCUuGGUUGAUCAUCCgGGGUUCUCCCuGGUGCACUCUUCCGGCccAGGCCAGC 873    
+                                        GCU G GACCAGAC UGGGCUuGGUUGAUCAUCC+G GUUCU CCuGGUGCACUCUUC GGC+ A GCCAGC
+                      Scaffold3 4687313 GCUCGAGACCAGACCUGGGCUUGGUUGAUCAUCCAG-GUUCUUCCUGGUGCACUCUUCUGGCUUAUGCCAGC 4687243
+                                        788999***************************986.689999***************************** PP
+
+                                        ::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_ITS+28S-rDNA--956-bp.fna     874 AUCAGUUcGCCcuGGGGGAuAAAGGCuuCGGGAAuGUGGCUCuCUCCGGGGAGUG 928    
+                                        AUC  UU+G C uG GG A+AA GG uuC GG AuGUG CU    CCGGG AGUG
+                      Scaffold3 4687242 AUCGAUUUGUCUUGAGGAACAAUGGUUUCCGGGAUGUGACUA--CCCGGGCAGUG 4687190
+                                        **************************************9875..46788888876 PP
+
+>> Scaffold1  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (3) ?     0.016   16.6   0.0 hmm      752      808 ..     1013790     1013850 + .. 0.78     - 0.39
+
+                                        :::::::::::::::::::::::::::::::::::::::::....:::::::::::::::: CS
+  FSSC_ITS+28S-rDNA--956-bp.fna     752 GAACUUUGAAAAGAGAGUUAAAaAGUACGUGAAAUUGUUGA....AAGGGAAGCGCUUGUG 808    
+                                         AA UUU AAAAGAGAGUUAA +AGUACGUGAAAUUGU G     A  GGA  CG U GUG
+                      Scaffold1 1013790 AAAUUUUAAAAAGAGAGUUAAGCAGUACGUGAAAUUGUCGUucgcAUUGGACCCGUUGGUG 1013850
+                                        4677899999**************************9876411114445555555555554 PP
+
+>> Scaffold5  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (4) ?       1.1   10.6   1.0 hmm      693      821 ..     2222270     2222153 - .. 0.73     - 0.46
+
+                                        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_ITS+28S-rDNA--956-bp.fna     693 AAAGCUAAAUACCGGCCAGAGACCGAUAGCGCACAAGUAGAGUGAUCGAAAGAUGAAAAGAACUUUGAAAAG 764    
+                                        AA GC A  UACC  C   A A   AUAG G  C    AGA  GAUCGAAAG               A AAG
+                      Scaffold5 2222270 AAGGCAAGCUACCACCUUCAAAGAAAUAGUGUCCGGCAAGAAGGAUCGAAAGG--------------AGAAG 2222213
+                                        44455555555555554444444556666666666666666667777777664..............34455 PP
+
+                                        ::::::::::::::::::::::::::::::::::::::::::::::...::::::::::: CS
+  FSSC_ITS+28S-rDNA--956-bp.fna     765 AGAGUUAAAaAGUACGUGAAAUUGUUGAAAGGGAAGCGCUUGUGAC...CAGACUUGGGC 821    
+                                           GUUA A AG ACG GAAAUUG UG AA   AAGCG    UGAC   CAGAC  GG C
+                      Scaffold5 2222212 GAGGUUAUAGAGGACGGGAAAUUGGUGUAAUAAAAGCGUCAAUGACagaCAGACGAGGUC 2222153
+                                        556899********************************9999998744456666665554 PP
+
+>> Scaffold2  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (5) ?       5.7    8.2   0.7 hmm      756      861 ..     3020655     3020767 + .. 0.79     - 0.58
+
+                                        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.......::::::: CS
+  FSSC_ITS+28S-rDNA--956-bp.fna     756 UUUGAAAAGAGAGUUAAAaAGUACGUGAAAUUGUUGAAAGGGAAGCGCUUGUGACCAG.......ACUUGGG 820    
+                                        U UG A AG GA U AAAaAG   G GAAAU G      GG AAG GCU  U  CCAG         U G G
+                      Scaffold2 3020655 UCUGGAGAGGGAAUAAAAAAGCUGGAGAAAUGGCGCGGGGGAAAGGGCUCUUUGCCAGgggggagUGUGGAG 3020726
+                                        56788889999*******************998877777777888888877777776511111115677889 PP
+
+                                        ::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_ITS+28S-rDNA--956-bp.fna     821 CUuGGUUGAUCAUCCgGGGUUCUCCCuGGUGCACUCUUCCG 861    
+                                        CUuGG  GAU AU   GGGU  U CCuGG GCA   U C G
+                      Scaffold2 3020727 CUUGGGCGAUGAUGACGGGUGAUACCUGGGGCAUGAUGCGG 3020767
+                                        *****************************999976655544 PP
+
+
+
+Internal HMM-only pipeline statistics summary: (run for model(s) with zero basepairs)
+--------------------------------------------------------------------------------------
+Query model(s):                                          1  (930 consensus positions)
+Target sequences:                                        9  (94873116 residues searched)
+Windows passing local HMM SSV      filter:            3925  (0.05817); expected (0.02)
+Windows passing local HMM MSV bias filter:            2226  (0.03303); expected (0.02)
+Windows passing local HMM Viterbi  filter:              23  (0.0003348); expected (0.001)
+Windows passing local HMM Forward  filter:               6  (0.0001083); expected (1e-05)
+Total HMM hits reported:                                 5  (6.535e-06)
+
+# CPU time: 7.63u 0.05s 00:00:07.68 Elapsed: 00:00:01.86
+//
+Query:       FSSC_RPB2--1588-bp.fna  [CLEN=1588]
+Hit scores:
+ rank     E-value  score  bias  sequence    start     end   mdl trunc   gc  description
+ ----   --------- ------ -----  --------- ------- -------   --- ----- ----  -----------
+  (1) !  2.7e-265  885.0   0.0  Scaffold3 2966345 2965521 - hmm     - 0.54  -
+  (2) !  1.1e-243  813.4   0.0  Scaffold3 2965391 2964591 - hmm     - 0.53  -
+  (3) !   1.7e-34  120.9   0.0  Scaffold4 2315121 2315839 + hmm     - 0.51  -
+  (4) !   1.6e-26   94.6   0.0  Scaffold6 1337459 1336642 - hmm     - 0.55  -
+  (5) !   5.9e-08   33.1   0.0  Scaffold4 2314349 2314665 + hmm     - 0.53  -
+  (6) !    0.0059   16.5   0.0  Scaffold1 5920205 5920315 + hmm     - 0.60  -
+ ------ inclusion threshold ------
+  (7) ?     0.037   13.9   0.1  Scaffold4  478876  478690 - hmm     - 0.55  -
+  (8) ?     0.071   12.9   0.0  Scaffold4 2314870 2315072 + hmm     - 0.51  -
+  (9) ?      0.31   10.8   0.0  Scaffold4 3659261 3659088 - hmm     - 0.56  -
+ (10) ?         1    9.1   0.0  Scaffold6 1338065 1337981 - hmm     - 0.53  -
+ (11) ?       1.7    8.3   0.8  Scaffold2 3674449 3674606 + hmm     - 0.59  -
+
+
+Hit alignments:
+>> Scaffold3  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !  2.7e-265  885.0   0.0 hmm        2      826 ..     2966345     2965521 - .. 0.99     - 0.54
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna       2 ACcCCuAUuGGACGAGAUGGAAAGCUCGCCAAGCCCCGUCAGCUaCACAACACCCAUUGGGGuCUGGUcUGuCCAGCCG 80     
+                                 ACcCCuAUuGGACGAGAUGGAAAGCUCGCCAAGCCCCGUCAGCUaCACAACACCCAUUGGGGuCUGGUcUGuCCAGCCG
+               Scaffold3 2966345 ACCCCUAUUGGACGAGAUGGAAAGCUCGCCAAGCCCCGUCAGCUACACAACACCCAUUGGGGUCUGGUCUGUCCAGCCG 2966267
+                                 799**************************************************************************** PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna      81 AGACgCCcGAGGGUCAGGCUUGUGGuCUGGUCAAGAACUUGUCcCUGAUGUGcUAcGUCAGUGUCGGcUCUCCcUCcGA 159    
+                                 AGAC+CCcGAGGGUCAGGCUUGUGGuCUGGUCAAGAACUUGUCcCUGAUGUG+UAcGUCAGUGUCGG+UCUCC+UC+GA
+               Scaffold3 2966266 AGACACCCGAGGGUCAGGCUUGUGGUCUGGUCAAGAACUUGUCCCUGAUGUGUUACGUCAGUGUCGGUUCUCCUUCUGA 2966188
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     160 ACCucUGAUuGAGUUCAUGAUCAACCGAGGUAUGGAaGUCGUGGAAGAGUACGAgCCCCUGAGAUAcCCgCAUGCuACC 238    
+                                 ACCucUGAU+GAGUUCAUGAUCAACCGAGG AUGGAaGUCGUGGAAGAGUACGAgCCCCUGAGAUAcCCgCAUGCuACC
+               Scaffold3 2966187 ACCUCUGAUCGAGUUCAUGAUCAACCGAGGCAUGGAAGUCGUGGAAGAGUACGAGCCCCUGAGAUACCCGCAUGCUACC 2966109
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     239 AAGAUcUUuGUCAAuGGUGUcUGGUGuGGUGUcCACUCgGACCCcAAGCAUCUCGUCAGcCAGGUccUGGACACaCGAC 317    
+                                 AAGAUcUUuGUCAAuGGUGUcUGGUG+GGUGUcCACUCgGACCCcAAGCAUCUCGUCAGcCAGGUccUGGACACaCGAC
+               Scaffold3 2966108 AAGAUCUUUGUCAAUGGUGUCUGGUGCGGUGUCCACUCGGACCCCAAGCAUCUCGUCAGCCAGGUCCUGGACACACGAC 2966030
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     318 GAAAGUCGUAccUGCAGUAcGAGGUGUCgCUuGUUCGUGACAUUCGAGAuCGAGAGUUCAAGGUCUUCUCCGACGCuGG 396    
+                                 GAAAGUCGUAccUGCA UAcGAGGUGUCgCU GU CGUGACAUUCGAGAuCGAGAGUUCAAGGUCUUCUCCGACGCuGG
+               Scaffold3 2966029 GAAAGUCGUACCUGCAAUACGAGGUGUCGCUCGUCCGUGACAUUCGAGAUCGAGAGUUCAAGGUCUUCUCCGACGCUGG 2965951
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     397 CCGAGUCAUGAGgCCGGUCUUUACGGUuCAGCAGGAGGAuGACCAcGAgUCUGGUAUuGCCAAGGGAGCuuUGGUuCUG 475    
+                                 CCGAGUCAUGAGgCC GUCUUUACGGUuCAGCAGGAGGAuGACCAcGAgUCUGGUAU GCCAAGGGAGCuuUGGUuCUG
+               Scaffold3 2965950 CCGAGUCAUGAGGCCAGUCUUUACGGUUCAGCAGGAGGAUGACCACGAGUCUGGUAUCGCCAAGGGAGCUUUGGUUCUG 2965872
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     476 ACCAAGGACcUuGUCAACAAGcUuGCuAAGGAGCAGGCGGAGCCaCCAGAGGACCCAUCaauGAAGAUUGGAUGGGAGG 554    
+                                 ACCAAGGACcUuGUCAACAAGcUuGCuAAGGAGCAGGCGGAGCCaCCAGAGGACCCAUCaauGAAGAUUGGAUGGGAGG
+               Scaffold3 2965871 ACCAAGGACCUUGUCAACAAGCUUGCUAAGGAGCAGGCGGAGCCACCAGAGGACCCAUCAAUGAAGAUUGGAUGGGAGG 2965793
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     555 GUCUGAUCCGaGCcGGaACcAUCGAGUACCUCGAUGCuGAGGAAGAGGAGaCGGCuAUGAUUUGCAUGACuCCUGAGGA 633    
+                                 GUCUGAUCCGaGCcGGaACcAUCGAGUACCUCGAUGCuGAGGAAGAGGAGaCGGCuAUGAUUUGCAUGACuCCUGAGGA
+               Scaffold3 2965792 GUCUGAUCCGAGCCGGAACCAUCGAGUACCUCGAUGCUGAGGAAGAGGAGACGGCUAUGAUUUGCAUGACUCCUGAGGA 2965714
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     634 uCUuGAcCUCUAuCGcAUGCAAAAGGCuGGUUACGUcGUaGAuGAcGAUAACACGGACGACCCcAACAGGAGaUUGAAG 712    
+                                 uCUuGAcCUCUAuCGcAUGCAAAAGGCuGGUUACGUcGUaGAuGAcGAUAACACGGACGACCCcAACAGGAGaUUGAAG
+               Scaffold3 2965713 UCUUGACCUCUAUCGCAUGCAAAAGGCUGGUUACGUCGUAGAUGACGAUAACACGGACGACCCCAACAGGAGAUUGAAG 2965635
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     713 ACcAAGACgAACCCCACAACUCACAUGUACACUCAUUGUGAGAUUCACCCcAGuAUGAUUCUuGGCAUuUGuGCCAGUA 791    
+                                 ACcAAGACgAACCCCACAACUCACAUGUACACUCAUUGUGAGAUUCACCCcAGuAUGAUUCUuGGCAUuUGuGC AGUA
+               Scaffold3 2965634 ACCAAGACGAACCCCACAACUCACAUGUACACUCAUUGUGAGAUUCACCCCAGUAUGAUUCUUGGCAUUUGUGCUAGUA 2965556
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     792 UCAUUCCcUUCCCcGAUCACAACCAGGUAuACgAC 826    
+                                 UCAU CCcUUCCCcGAUCACAACCAGGUAu Cg C
+               Scaffold3 2965555 UCAUCCCCUUCCCCGAUCACAACCAGGUAUGCGCC 2965521
+                                 *****************************988753 PP
+
+>> Scaffold3  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (2) !  1.1e-243  813.4   0.0 hmm      787     1588 .]     2965391     2964591 - .. 0.96     - 0.53
+
+                                 :::::::::.::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     787 CAGUAUCAU.UCCcUUCCCcGAUCACAACCAGGUAuACgACaCGaUCCAUGGAGUUCCUCAAGUUCCGUGAaCUGCCaG 864    
+                                 CA  AU  U U C+ UCC c A    A C   G  +AC+ACaCGaUCCAUGGAGUUCCUCAAGUUCCGUGAaCU CCaG
+               Scaffold3 2965391 CAACAUUCUuUACUAUCCGCAAA--AACCUCUGGCGACAACACGAUCCAUGGAGUUCCUCAAGUUCCGUGAACUACCAG 2965315
+                                 44443333303333333333332..233334455689****************************************** PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     865 CcGGuCAGAACGCCAUcGUCGCuAUCGCUUGcUACUCuGGUUAcAACCAGGAAGAUUCCGUCAUuAUGAACCAGAGuAG 943    
+                                 CcGGuCAGAA GCCAUcGUCGCuAUCGCUUGcUACUCuGGUUAcAACCAGGAAGAUUCCGUCAUuAUGAACCAGAGuAG
+               Scaffold3 2965314 CCGGUCAGAAUGCCAUCGUCGCUAUCGCUUGCUACUCUGGUUACAACCAGGAAGAUUCCGUCAUUAUGAACCAGAGUAG 2965236
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     944 UAUCGAuCGAGGCuUGUUCCGcAGUcUGUUCUUCaGAUCcUACUCuGAcCAGGAGAAGAAGGUCGGuCUgAACUACACG 1022   
+                                 UAUCGAuCGAGGC+UGUUCCGcAGUcUGUUCUUCaGAUCcUACUCuGAcCAGGAGAAGAAGGUCGG CUgAACUACACG
+               Scaffold3 2965235 UAUCGAUCGAGGCCUGUUCCGCAGUCUGUUCUUCAGAUCCUACUCUGACCAGGAGAAGAAGGUCGGACUGAACUACACG 2965157
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1023 GAAGUGUUuGAGAAGCCCUUCCAGCAGUCGACgCUUCGuAUGAAGCAcGGUACcUACGACAAGCUGGAcGAGGAuGGUA 1101   
+                                 GAAGUGUU+GAGAAGCCCUUCCAGCAGUCGACgCUUCGuAUGAAGCAcGGUAC UACGACAAGCUGGAcGAGGAuGGUA
+               Scaffold3 2965156 GAAGUGUUCGAGAAGCCCUUCCAGCAGUCGACGCUUCGUAUGAAGCACGGUACUUACGACAAGCUGGACGAGGAUGGUA 2965078
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1102 UcGUGGCcCCcGGuGUGCGAGUGUCgGGUGAaGAUAUCAUcAUCGGCAAGACuGCGCCGAUuGAuCAAGAGAACCAGGA 1180   
+                                 UcGUGGCcCCcGGuGU CGAGUGUC+GGUGAaGA AUCAUcAUCGGCAAGACuGCGCCGAUuGA+CAAGAGAACCAGGA
+               Scaffold3 2965077 UCGUGGCCCCCGGUGUCCGAGUGUCAGGUGAAGACAUCAUCAUCGGCAAGACUGCGCCGAUUGACCAAGAGAACCAGGA 2964999
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1181 UCUgGGuACCAGGACaACgGUGCACCAGCGUCGUGAUAUCUCcACgCCGCUGCGAAGuACcGAgAACGGuAUCGUuGAu 1259   
+                                 UCUgGGuACCAGGAC ACgGUGCACCAGCGUCGUGAUAUCUCcACgCCGCUGCGAAGuACcGAgAACGGuAUCGU+GAu
+               Scaffold3 2964998 UCUGGGUACCAGGACGACGGUGCACCAGCGUCGUGAUAUCUCCACGCCGCUGCGAAGUACCGAGAACGGUAUCGUCGAU 2964920
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1260 ucGGUCAUUGUGACuGUCAAuGCcGACAACGUCAAGUAcGUCAAGGUCCGUGUGAGGACGACCAAGAUUCCuCAGAUUG 1338   
+                                 ucGGUCAUUGUGACuGUCAAuGCcGACAACGUCAAGUAcGUCAAGGUCCGUGUGAGGACGACCAAGAUUCCuCAGAUUG
+               Scaffold3 2964919 UCGGUCAUUGUGACUGUCAAUGCCGACAACGUCAAGUACGUCAAGGUCCGUGUGAGGACGACCAAGAUUCCUCAGAUUG 2964841
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1339 GuGACAAGUUuGCCUCUCGUCACGGACAGAAGGGUACCAUUGGUGUuACcUACcGaCAGGAGGAuAUGCCcUUcagCAG 1417   
+                                 GuGACAAGUU+GCCUCUCGUCACGGACAGAAGGGUAC AUUGGUGU ACcUACcG CAGGAGGAuAUGCCcUUcagCAG
+               Scaffold3 2964840 GUGACAAGUUCGCCUCUCGUCACGGACAGAAGGGUACAAUUGGUGUCACCUACCGGCAGGAGGAUAUGCCCUUCAGCAG 2964762
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1418 GGAGGGuGUGACaCCaGACAUuAUCAUuAACCCCCACGCCAUUCCgUCGCGAAUGACAAUUGCcCAUUUGAUUGAAUGC 1496   
+                                 GGAGGGuGUGACaCCaGACAUuAUCAUuAACCCCCACGCCAUUCC UCGCGAAUGACAAUUGCcCAUUUGAUUGAAUGC
+               Scaffold3 2964761 GGAGGGUGUGACACCAGACAUUAUCAUUAACCCCCACGCCAUUCCCUCGCGAAUGACAAUUGCCCAUUUGAUUGAAUGC 2964683
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1497 CUCCUCAGUAAGGUGUCAACgCUcGAAGGCAUGGAGGGUGAuGCaACaCCuUUCACcGAuGUCACuGUcGACUCcGUuU 1575   
+                                 CUCCUCAGUAAGGUGUCAACgCUcGAAGGCAUGGAGGGUGAuGCaAC+CCuUUCACcGAuGUCAC GUcGACUCcGUuU
+               Scaffold3 2964682 CUCCUCAGUAAGGUGUCAACGCUCGAAGGCAUGGAGGGUGAUGCAACGCCUUUCACCGAUGUCACCGUCGACUCCGUUU 2964604
+                                 ******************************************************************************* PP
+
+                                 ::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1576 CGGAGCUGCUCCG 1588   
+                                 CGGAGCUGCUCCG
+               Scaffold3 2964603 CGGAGCUGCUCCG 2964591
+                                 *********9986 PP
+
+>> Scaffold4  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (3) !   1.7e-34  120.9   0.0 hmm      828     1525 ..     2315121     2315839 + .. 0.66     - 0.51
+
+                                 :::::::::::::::::::::::::..................:::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     828 CGaUCCAUGGAGUUCCUCAAGUUCC..................GUGAaCUGCCaGCcGGuCAGAACGCCAUcGUCGCuA 888    
+                                 CGa CCAUGG   UC  CAAG  C                    U A+CU CC GC GG CAGAACGC A +GUCG + 
+               Scaffold4 2315121 CGACCCAUGGUUAUCUCCAAGACCAuccagcuuauuggcuaugAUAAGCUCCCCGCAGGCCAGAACGCGACUGUCGUCG 2315199
+                                 5566666666655555555553221111111111111111111356789999*************************** PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     889 UCGCUUGcUACUCuGGUUAcAACCAGGAAGAUUCCGUCAUuAUGAACCAGAGuAGUAUCGAuCGAGGCuUGUUCCGcAG 967    
+                                 UC   U  UACUCuGG UA+ A    GAAGAU C  U  Uu UGAAC AG      AUCGA+ GAGG uU    CGc G
+               Scaffold4 2315200 UCAUGUCGUACUCUGGAUAUGAUAUCGAAGAUGCUUUGGUUCUGAACAAGGCGUCGAUCGACAGAGGAUUUGGACGCUG 2315278
+                                 **99999*****************************************999888889********************** PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.:::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     968 UcUGUUCUUCaGAUCcUACUCuGAcCAGGAGAAGAAGGUCGGuCUgAACUACACGGAA.GUGUUuGAGAAGCCCUUCCA 1045   
+                                  c G UCUUC+G    UAC C  AcC  G  A              AA UAC C  A  GU   +GAGA GC C UC  
+               Scaffold4 2315279 CCAGGUCUUCCGCAAAUACACG-ACCGAGCUACA-----------AAAAUACCCUAAUgGUCGCCGAGA-GCGCAUC-G 2315343
+                                 ************9999999875.44433322222...........222233322222101222223332.2222222.2 PP
+
+                                 ::::::::::::::::::::::....::::::..........:::......:::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1046 GCAGUCGACgCUUCGuAUGAAG....CAcGGU..........ACc......UACGACAAGCUGGAcGAGGAuGGUAUcG 1104   
+                                 G    CGA  C     AUGAAG    CA GGU          A c       A GA    CU GAcGA GAuGGU U G
+               Scaffold4 2315344 G----CGAUCCCCAAAAUGAAGaaggCAAGGUcaagcaaagaAUCaagaagCAUGAAGGUCUCGACGACGAUGGUUUGG 2315418
+                                 2....22222222233333333000023333211000000001110000002223333345555666666666654432 PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::..............::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1105 UGGCcCCcGGuGUGCGAGUGUCgGGUGAaGAUAUCAUcAU..............CGGCAAGACuGCGCCGAUuGAuCAA 1169   
+                                               C A UGU gG U  aGA  UCAU AU              C   AAG    C CC  UuGA+CA 
+               Scaffold4 2315419 --------------CCAUUGUGGGAUACAGAAUUCAUAAUggcgaggccaugauCAAGAAGGAAACACCCCUUGACCA- 2315482
+                                 ..............3344444444444444444444444300000000000000334444444556666667776654. PP
+
+                                 ::::::::::::::::::::::::::.::::::.:::::::::....:::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1170 GAGAACCAGGAUCUgGGuACCAGGAC.aACgGU.GCACCAGCG....UCGUGAUAUCUCcACgCCGCUGCGAAGuACcG 1242   
+                                 GA AACCA       GG+A C G A   A  GU G  CCAGCG     CGUGAU   UC     CG   CG A u C+G
+               Scaffold4 2315483 GACAACCACC-----GGCAUCGGAAUgGAUCGUgGACCCAGCGaauaCCGUGAUUCUUCAGUCUCGUACCGUAUUGCUG 2315556
+                                 5555555421.....2222222221111122220223445554222246777776666666666666667777777777 PP
+
+                                 :::::::::::::::::::::::::::::::::::::::::::::::::::...::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1243 AgAACGGuAUCGUuGAuucGGUCAUUGUGACuGUCAAuGCcGACAACGUCA...AGUAcGUCAAGGUCCGUGUGAGGAC 1318   
+                                 A    G    C UuGA+  GGU AU GU  C   C A  C GA AA G CA       + UCAAGGUCC     AG   
+               Scaffold4 2315557 AUCCGGCAUACAUUGACAAGGUGAUGGUAUC---CCAAACAGAGAAGGACAcuaCAGUUAUCAAGGUCCAGACCAGACA 2315632
+                                 6543333334677777777777777766544...3344455666665555411122335689*******9888888888 PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1319 GACCAAGAUUCCuCAGAUUGGuGACAAGUUuGCCUCUCGUCACGGACAGAAGGGUACCAUUGGUGUuACcUACcGaCAG 1397   
+                                 GAC      UCC  AG UUGG GACAAGUUu C UCUCGUCACGG CA AAGGGU    UUGG  U A       +CAG
+               Scaffold4 2315633 GACUCGUCGUCCAGAGCUUGGAGACAAGUUUUCAUCUCGUCACGGUCAAAAGGGUGUGGUUGGCAUCAUUGUUGAUCAG 2315711
+                                 888888888899999****************************************************999999999*** PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1398 GAGGAuAUGCCcUUcagCAGGGAGGGuGUGACaCCaGACAUuAUCAUuAACCCCCACGCCAUUCCgUCGCGAAUGACAA 1476   
+                                 GAGGAu UGCCcUUc++     AGGG  UGAC CC GA AU AUCAU AACCC CACG   U CCgUC CGAAUGAC  
+               Scaffold4 2315712 GAGGAUCUGCCCUUCUCUGACAAGGGCCUGACCCCUGAUAUCAUCAUGAACCCUCACGGUUUCCCGUCUCGAAUGACGG 2315790
+                                 *****************99999********************************************************* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1477 UUGCcCAUUUGAUUGAAUGCCUCCUCAGUAAGGUGUCAACgCUcGAAGG 1525   
+                                 U G c A  UG U GA UGC U     G AAGG  UC A   Uc A GG
+               Scaffold4 2315791 UCGGCAAGCUGCUCGAGUGCUUGACGGGCAAGGCUUCCAUUAUCCAUGG 2315839
+                                 ********************99999999999998888777666655555 PP
+
+>> Scaffold6  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (4) !   1.6e-26   94.6   0.0 hmm      761     1564 ..     1337459     1336642 - .. 0.63     - 0.55
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     761 CCcAGuAUGAUUCUuGGCAUuUGuGCCAGUAUCAUUCCcUUCCCcGAUCACAACCAGGUAuACgACaCGaUCCAUGGAG 839    
+                                 CCcAGuA  A UCUu GC  + G  CC   A CA   C U CC  G   ACAA C GG   A  AC CG  C    GAG
+               Scaffold6 1337459 CCCAGUACUAAUCUUCGCUACCGAACCGACAACAAGUCAUACC--GCAUACAAACUGGACAAACACCCGU-CGUGCGAG 1337384
+                                 5667777777777777777777777777777777666665544..3344556666665544444444442.22223344 PP
+
+                                 ::::::...:..:........::::::::::::::.::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     840 UUCCUC...A..A........GUUCCGUGAaCUGC.CaGCcGGuCAGAACGCCAUcGUCGCuAUCGCUUGcUACUCuGG 904    
+                                   CCUC   A  A        GUU CG  AaCU C C   cGG   GAACGC  U+GU GC+ UC   U  UA  CuGG
+               Scaffold6 1337383 CACCUCuucAcaAcacauaugGUUUCGACAACUUCcCCAACGGCAUGAACGCAGUUGUUGCCGUCAUCUCGUAUACUGG 1337305
+                                 3333321112221222222227777887777766515567899999********************99*9********* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     905 UUAcAACCAGGAAGAUUCCGUCAUuAUGAACCAGAGuAGUAUCGAuCGAGGCuUGUUCCGcAGUcUGUUCUUCaGAUCc 983    
+                                  UA+ AC  GGA GA  CC U AUu U AAC AGAG+      GA CG GG uU    C                 U  
+               Scaffold6 1337304 AUAUGACAUGGACGACGCCAUGAUUCUCAACAAGAGCGCCCAUGAGCGUGGUUUUGGGCA----------------UGG 1337242
+                                 ************************************998888888888887655333332................223 PP
+
+                                 :::::::.::::::::::::::::::::::::::::...::::.....:.........:..:::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     984 UACUCuG.AcCAGGAGAAGAAGGUCGGuCUgAACUA...CACG.....G.........A..AGUGUUuGAGAAGCCCUU 1042   
+                                 UACU u  Ac AG   AAGAAG UC  uCU+AA  A   C CG               A  AGUGUU    A GC  UU
+               Scaffold6 1337241 UACUAUCuACAAGACAAAGAAGAUCUCUCUCAAGGAugaCUCGcgaacAaaggccaccAagAGUGUUACCAAGGCUUUU 1337163
+                                 3333322034455556778888888888887764331112221111111000111111111334443333333332222 PP
+
+                                 :...:::::.:::::::::::::::::::::::::::.::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1043 C...CAGCA.GUCGACgCUUCGuAUGAAGCAcGGUAC.cUACGACAAGCUGGAcGAGGAuGGUAUcGUGGCcCCcGGuG 1116   
+                                       GCA  UC   gCU CGu    AGC cG  A  c A G  A GCUGGA GA GA+GG  U   G C+C cG  G
+               Scaffold6 1337162 GgcuUCGCAcCUCACAGCUACGUG---AGCGCGUCAUaCCAGGGAAUGCUGGAUGACGACGGCCU---GCCUCACGUGG 1337090
+                                 100011111012222233444432...44444443321235566789*************99754...33333333322 PP
+
+                                 ..::::::::::::::.::::::::::::::::...:::::::::::::::::::::::::::::::::::::::.::: CS
+  FSSC_RPB2--1588-bp.fna    1117 ..UGCGAGUGUCgGGU.GAaGAUAUCAUcAUCG...GCAAGACuGCGCCGAUuGAuCAAGAGAACCAGGAUCUgG.GuA 1188   
+                                    GC  G   C+GG  G aGAU U AUc  CG   G  A AC G G CG   GA+ A  A   C AG   CUgG G A
+               Scaffold6 1337089 gcCGCAUGAUCCAGGAgGGAGAUGUAAUCUGCGcguGGCACACAGUGACGCCCGACUACAAUGGCAAG---CUGGuGAA 1337014
+                                 00233333333433321334555555555444311145566777877777777776554433332222...22221334 PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::..::::::........::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1189 CCAGGACaACgGUGCACCAGCGUCGUGAUAUCUCcACgCCGCUGCG..AAGuAC........cGAgAACGGuAUCGUuG 1257   
+                                 CC GGA   C                   AU   cAC  C CU CG  AAGuAC        cGAgA  GG  U GU+G
+               Scaffold6 1337013 CCUGGAUGGC-------------------AU---CACU-CACUACGaaAAGUACaaggauggCGAGACGGGCUUUGUCG 1336958
+                                 4444443222...................11...2221.2223333113344432222222257888899999****** PP
+
+                                 ::::::::::::::::::...:::::::::::::::............::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1258 AuucGGUCAUUGUGACuG...UCAAuGCcGACAACG............UCAAGUAcGUCAAGGUCCGUGUGAGGACGAC 1321   
+                                 A   GGUC    UGA  G    C A  CcG CAACG             CA  U +GUCAAG UCCGUGU        C
+               Scaffold6 1336957 AAGAGGUCCGCCUGAUCGgagCCGAAACCGGCAACGagccucuccagaCCAUCUCUGUCAAGUUCCGUGUU-------C 1336886
+                                 ******999888887543111444555555566555333322222221245567789***********984.......7 PP
+
+                                 :::::::::::::.::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1322 CAAGAUUCCuCAG.AUUGGuGACAAGUUuGCCUCUCGUCACGGACAGAAGGGUACCAUUGGUGUuACcUACcGaCAGGA 1399   
+                                 C  GAU CC+CA  AU GGuGACAAGUU+ C UC  G CACGGACAGAAGGGU  C         A  U  c a  GG 
+               Scaffold6 1336885 CUCGAUCCCCCAUcAUCGGUGACAAGUUCUCGUCCAGACACGGACAGAAGGGUGUCGCCUCGCAAAAGUGGCCAACGGU 1336807
+                                 88899999988853899*********************************99876543322222222233333445789 PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1400 GGAuAUGCCcUUcagCAGGGAGGGuGUGACaCCaGACAUuAUCAUuAACCCCCACGCCAUUCCgUCGCGAAUGACAAUU 1478   
+                                 GGAu UGCCcUUc++   G   GG  U   aCC+GACAU AUCAUuAACCCCCACGC  U CC UC CG AUGAC AU 
+               Scaffold6 1336806 GGAUCUGCCCUUCUCGGAGACUGGCAUCCAACCGGACAUCAUCAUUAACCCCCACGCUUUCCCUUCCCGUAUGACGAUA 1336728
+                                 ************9987777777888888899***********************************************9 PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    1479 GCcCAUUUGAUUGAAUGCCUCCUCAGUAAGGUGUCAACgCUcGAAGGCAUGGAGGGUGAuGCaACaCCuUUCACcGAuG 1557   
+                                 G c   UU  U GAAU  CUC  C G AAGG      CgCU+ A GGC U G G   GA  C ACaCC UUCA    uG
+               Scaffold6 1336727 GGCAUGUUUGUGGAAUCGCUCGCCGGCAAGGCUGGCGCGCUGCAUGGCCUUGCGCAAGACUCGACACCGUUCAAGUUUG 1336649
+                                 988888888899*******************999999*********************************999766666 PP
+
+                                 ::::::: CS
+  FSSC_RPB2--1588-bp.fna    1558 UCACuGU 1564   
+                                  C   G 
+               Scaffold6 1336648 ACGAGGA 1336642
+                                 5555444 PP
+
+>> Scaffold4  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (5) !   5.9e-08   33.1   0.0 hmm       17      320 ..     2314349     2314665 + .. 0.69     - 0.53
+
+                                 ::::.:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna      17 GAUG.GAAAGCUCGCCAAGCCCCGUCAGCUaCACAACACCCAUUGGGGuCUGGUcUGuCCAGCCGAGACgCCcGAGGGU 94     
+                                 GA G GAAAG UC C    CC CGU  GCU CA     C CA UGGGGu UG U UG  C  C GA AC+CC+GA GG 
+               Scaffold4 2314349 GACGcGAAAGGUCUCAGGCCCUCGUGCGCUCCAACCGUCGCAAUGGGGUAUGCUGUGCACUUCGGAUACACCUGAAGGA 2314427
+                                 4433367888888887778889999999999998888999*************************************** PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::......::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna      95 CAGGCUUGUGGuCUGGUCAAGAACUUGUCcCUGAUGUGcUAcGUCA......GUGUCGGcUCUCCcUCcGAACCucUGA 167    
+                                  A GC UG GGuCUGGU AAGAACUUG C+ UGAUG    A  UCA       UGUCG           G ACC  UGA
+               Scaffold4 2314428 GAAGCCUGCGGUCUGGUGAAGAACUUGGCUUUGAUGACACAUAUCAccacaaAUGUCGAG------GAAGGACCCGUGA 2314500
+                                 ***********************************9888777776511111245555543......3457788999999 PP
+
+                                 ::::::::::::::::::::::::::::::::::::......:::::...::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     168 UuGAGUUCAUGAUCAACCGAGGUAUGGAaGUCGUGG......AAGAG...UACGAgCCCCUGAGAUAcCCgCAUGCuAC 237    
+                                   GAG   AU  U A     G  A GGAaGU G GG      A  A    U  G   C  UGA   AcC g A G  A 
+               Scaffold4 2314501 AGGAGACUAUCCUGACGAUCGACAAGGAAGUUGAGGcuaucgAGAAAuucUCUGGCUCAAUGAUGCACCGGGAAGGGAG 2314579
+                                 9999976555333332222233455566655554431111103322200023333344455555666666666554444 PP
+
+                                 ::::...:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::. CS
+  FSSC_RPB2--1588-bp.fna     238 CAAG...AUcUUuGUCAAuGGUGUcUGGUGuGGUGUcCACUCgGACCCcAAGCAUCUCGUCAGcCAGGUccUGGACAC. 312    
+                                 C A    AUc  uGUCAAuGGU      U + G  U+ AC CgGA  Cc A  A  U   CA   AGGU+c GGACA  
+               Scaffold4 2314580 CUACgucAUCCAUGUCAAUGGUACGCCAUUC-GCAUUGACACGGAAUCCGAAGAGGUUCGCACAAAGGUUCAGGACAUu 2314657
+                                 3332111566667888888877654444433.45666778888876666555555555557888899999999999852 PP
+
+                                 :::::::: CS
+  FSSC_RPB2--1588-bp.fna     313 aCGACGAA 320    
+                                 +CGACGAA
+               Scaffold4 2314658 GCGACGAA 2314665
+                                 57777765 PP
+
+>> Scaffold1  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (6) !    0.0059   16.5   0.0 hmm      438      542 ..     5920205     5920315 + .. 0.80     - 0.60
+
+                                 :::::::::::::::::::::::::::::::::::::::::::::::::......:::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     438 ACCAcGAgUCUGGUAUuGCCAAGGGAGCuuUGGUuCUGACCAAGGACcU......uGUCAACAAGcUuGCuAAGGAGCA 510    
+                                  CC   Ag CUGG  UuG CAAGGG    uU G  C G CCAAGG  c       uG CA CAAGcUuGC+AAG AGCA
+               Scaffold1 5920205 CCCUGAAGGCUGGCGUUGACAAGGGCAUCUUUGAGCAGCCCAAGGGUCCuuccggUGGCACCAAGCUUGCCAAGAAGCA 5920283
+                                 4555567899****************999999***********9975541222226889******************** PP
+
+                                 :::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     511 GGCGGAGCCaCCAGAGGACCCAUCaauGAAGA 542    
+                                 G C GAGCC     AGG   C  C  +GAAGA
+               Scaffold1 5920284 GCCUGAGCCCAAGAAGGCUGCCGCUGAGAAGA 5920315
+                                 *******9866555666555555555555554 PP
+
+>> Scaffold4  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (7) ?     0.037   13.9   0.1 hmm      551      715 ..      478876      478690 - .. 0.62     - 0.55
+
+                                ::::::::::::::::::::::::::::::::::::::::::::::::::::::.:::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    551 GAGGGUCUGAUCCGaGCcGGaACcAUCGAGUACCUCGAUGCuGAGGAAGAGGAG.aCGGCuAUGAUUUGCAUGACuCCUGA 630   
+                                GAGG U  GAU C aG  G  A +   GAG A    GA G  GA GA GA GAG a G C A GAU        CuC UGA
+               Scaffold4 478876 GAGGUUGAGAUUCCAGAGGAGAUUGAAGAGGAAGAAGAGGUCGAAGAGGAAGAGgAUGACGAGGAUA-------CUCUUGA 478803
+                                3333344444555555544444444445555444444444444443333333321233344444443.......4444444 PP
+
+                                ::...........:::::.......::..::::::::::::::::::.....::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    631 GG...........AuCUu.......GA..cCUCUAuCGcAUGCAAAA.....GGCuGGUUACGUcGUaGAuGAcGAUAACA 686   
+                                GG           AuC u       GA  c UC   CG A G A AA     GGC G   A GU GU+GA GA GAU AC 
+               Scaffold4 478802 GGucgagggcgagAUCAUcgcugaaGAgcCAUCCGGCGAA-GAAGAAgagccGGCCGUAGAAGUUGUGGAGGAAGAUGACC 478723
+                                4311111011111111110001100110011222223322.222222222225677778899******************* PP
+
+                                ::::::::::::::::....::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna    687 CGGACGACCCcAACAG....GAGaUUGAAGACc 715   
+                                CGGACGAC CcA CAG    GA   UGAAGA  
+               Scaffold4 478722 CGGACGACACCAUCAGuccgGAAGCUGAAGAGG 478690
+                                ***********9998622225555666665533 PP
+
+>> Scaffold4  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (8) ?     0.071   12.9   0.0 hmm      669      899 ..     2314870     2315072 + .. 0.59     - 0.51
+
+                                 :::::::::::::::::::::::::::::::::::::::.::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     669 UcGUaGAuGAcGAUAACACGGACGACCCcAACAGGAGaU.UGAAGACcAAGACgAACCCCACAACUCACAUGUACACUC 746    
+                                 U G  G   AcGA  A A  GACG CC cA CA  A  U  GAAGACcAAG            AC CA A    CAC C
+               Scaffold4 2314870 UGGAUGUGAACGAGGAGAAUGACGCCCUCAUCACCAUCUaCGAAGACCAAG----------UGACGCAAAGUACCACGC 2314938
+                                 111111122233333333334444444444444433322123333333332..........356666666666789999 PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     747 AUUGUGAGAUUCACCCcAGuAUGAUUCUuGGCAUuUGuGCCAGUAUCAUUCCcUUCCCcGAUCACAACCAGGUAuACgA 825    
+                                 AU   GAGAUU A CC    A  AU CU GG      uGC  G  U AUUCC UUCCC  A CACAACCA      Cg 
+               Scaffold4 2314939 AUCUGGAGAUUGAGCCGUUCACCAUCCUGGGUGCAGUUGCAGGACUGAUUCCAUUCCCUCACCACAACCAAU----CGC 2315013
+                                 ***9************************999888888888889999*********************99743....333 PP
+
+                                 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     826 CaCGaUCCAUGGAGUUCCUCAAGUUCCGUGAaCUGCCaGCcGGuCAGAACGCCAUcGUCGCuAUCGCUUGcUAC 899    
+                                 C         G A U CCU      C  UG +C        GGu A  A GCCAU+G  GC+AUCGC U c AC
+               Scaffold4 2315014 CU-------CGUAAUACCUAC----CAAUGUGC----UAUGGGUAAACAAGCCAUUGGUGCCAUCGCCUACAAC 2315072
+                                 33.......334444444421....11122222....2334677777888999999999999999988766554 PP
+
+>> Scaffold4  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (9) ?      0.31   10.8   0.0 hmm      421      600 ..     3659261     3659088 - .. 0.62     - 0.56
+
+                                 :::::::::::::::::::::::...::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     421 GGUuCAGCAGGAGGAuGACCAcG...AgUCUGGUAUuGCCAAGGGAGCuuUGGUuCUGACCAAGGACcUuGUCAACAAG 496    
+                                 GG  C G A GA GAuG CC +G   Ag   G     G   AGGGAG    GG   U A CAA GACcU+   AA  AG
+               Scaffold4 3659261 GGACCUGGAUGACGAUGCCCGUGcccAGCGCGACGAGGAGCAGGGAGUCAAGGACAUUAUCAAUGACCUCAAAAAGCAG 3659183
+                                 2333333334444444433333211111112222223334578999999999******************9999999** PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     497 cUuGCuAAGGAGCAGGCGGAGCCaCCAGAGGACCCAUCaauGAAGAUUGGAUGGGAGGGUCUGAUCCGaGCcGGaACcA 575    
+                                 cU GC+AA  AGCAGGC GAGC   C   G ACCCA  a+  AAGAU       G G     G   CGaGC G  ACcA
+               Scaffold4 3659182 CUCGCCAACAAGCAGGCUGAGCUGGCC-CGCACCCAGAAC--AAGAUCUU----GCGUACUCGUAUCGAGCAG--ACCA 3659113
+                                 ********************9975443.344555554443..33443221....1222233344456777765..6788 PP
+
+                                 ::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     576 UCGAGUACCUCGAUGCuGAGGAAGA 600    
+                                 UC AG A CUC A  C GAG   GA
+               Scaffold4 3659112 UCAAGCAGCUCAAGUCGGAGAUUGA 3659088
+                                 8888888888877766666655444 PP
+
+>> Scaffold6  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+ (10) ?         1    9.1   0.0 hmm       56      140 ..     1338065     1337981 - .. 0.74     - 0.53
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna      56 CAUUGGGGuCUGGUcUGuCCAGCCGAGACgCCcGAGGGUCAGGCUUGUGGuCUGGUCAAGAACUUGUCcCUGAUGUGcU 134    
+                                    UGGGG  U  U UGuCC G C A ACgCC+GA GGU  G CUUGUGGuCU  U AA  A  U  C C  A GUGc 
+               Scaffold6 1338065 UCAUGGGGCUUCAUGUGUCCUGUCCACACGCCUGAUGGUGCGCCUUGUGGUCUUCUGAACCAUCUUGCGCACAAGUGCA 1337987
+                                 3357999999*******************************************99988887777777777777788776 PP
+
+                                 :::::: CS
+  FSSC_RPB2--1588-bp.fna     135 AcGUCA 140    
+                                 A  U A
+               Scaffold6 1337986 AGAUUA 1337981
+                                 544433 PP
+
+>> Scaffold2  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+ (11) ?       1.7    8.3   0.8 hmm      426      595 ..     3674449     3674606 + .. 0.64     - 0.59
+
+                                 :::::::...::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     426 AGCAGGA...GGAuGACCAcGAgUCUGGUAUuGCCAAGGGAGCuuUGGUuCUGACCAAGGACcUuGUCAACAAGcUuGC 501    
+                                 A CAGGA   G A+GAC  c  g CUGG AU GCC AGG  GC   G     G C AAGGA cU G     AAGcUuGC
+               Scaffold2 3674449 ACCAGGAuauGCACGACAGCCUGACUGGCAUCGCCGAGGAGGCCCAGAAGACGGCUAAGGAUCUGGAGUCGAAGCUUGC 3674527
+                                 3333333111445566666666889**********************9999*************99999999******* PP
+
+                                 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     502 uAAGGAGCAGGCGGAGCCaCCAGAGGACCCAUCaauGAAGAUUGGAUGGGAGGGUCUGAUCCGaGCcGGaACcAUCGAG 580    
+                                 + AGG G  GGC  AG      GAGGA   A   a+G AG U      GGAGG UCU    CGaG c  a   AUC AG
+               Scaffold2 3674528 CGAGGCGUUGGCCAAGGU---UGAGGAUGGAGAGAAGCAGGU------GGAGGUUCU----CGAGGCCCA--AAUCAAG 3674591
+                                 *99999988888777653...456666544433333333322......334444443....222222111..2344444 PP
+
+                                 ::::::::::::::: CS
+  FSSC_RPB2--1588-bp.fna     581 UACCUCGAUGCuGAG 595    
+                                   C   GAUGC GAG
+               Scaffold2 3674592 GUCAAGGAUGCCGAG 3674606
+                                 444444555555444 PP
+
+
+
+Internal HMM-only pipeline statistics summary: (run for model(s) with zero basepairs)
+--------------------------------------------------------------------------------------
+Query model(s):                                          1  (1588 consensus positions)
+Target sequences:                                        9  (94873116 residues searched)
+Windows passing local HMM SSV      filter:            3038  (0.07626); expected (0.02)
+Windows passing local HMM MSV bias filter:            1773  (0.04469); expected (0.02)
+Windows passing local HMM Viterbi  filter:              37  (0.0009207); expected (0.001)
+Windows passing local HMM Forward  filter:               8  (0.0002115); expected (1e-05)
+Total HMM hits reported:                                11  (4.636e-05)
+
+# CPU time: 13.56u 0.07s 00:00:13.63 Elapsed: 00:00:03.38
+//
+Query:       FSSC_TEF1-665-bp.fna  [CLEN=632]
+Hit scores:
+ rank     E-value  score  bias  sequence    start     end   mdl trunc   gc  description
+ ----   --------- ------ -----  --------- ------- -------   --- ----- ----  -----------
+  (1) !  2.6e-192  642.5   0.1  Scaffold2 6427210 6427837 + hmm     - 0.54  -
+ ------ inclusion threshold ------
+  (2) ?     0.042   16.1   0.0  Scaffold3 4896877 4896777 - hmm     - 0.53  -
+  (3) ?     0.048   15.9   0.0  Scaffold2 3187913 3188016 + hmm     - 0.54  -
+  (4) ?      0.17   14.1   0.0  Scaffold7 2145448 2145215 - hmm     - 0.54  -
+  (5) ?      0.56   12.4   0.0  Scaffold7  573210  573407 + hmm     - 0.51  -
+  (6) ?       4.9    9.3   0.0  Scaffold1 6008452 6008603 + hmm     - 0.57  -
+  (7) ?       9.7    8.3   0.1  Scaffold1 6008632 6008801 + hmm     - 0.62  -
+
+
+Hit alignments:
+>> Scaffold2  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !  2.6e-192  642.5   0.1 hmm        1      632 []     6427210     6427837 + .. 0.99     - 0.54
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna       1 AGUCGACCACCGUAAGUCaaaCCCUCaUcGCGAuCUGCUuAUCUCGGGUCGUGGAACCCCGCCuGguauCUCGGGCGGGGU 81     
+                               AGUCGACCACCGUAAGUCaaaCCC CaUcGCGAuCUGCUuAUCUCGGGUCGUGGAACCCCGCCuGguauCUCGGGCGGGGU
+             Scaffold2 6427210 AGUCGACCACCGUAAGUCAAACCCCCAUCGCGAUCUGCUUAUCUCGGGUCGUGGAACCCCGCCUGGUAUCUCGGGCGGGGU 6427290
+                               689****************************************************************************** PP
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna      82 auuCAUCAgUCACUucaUGCUGACAAUCAucuACAGACCGGUCACUUGAUCUACCAGUGCGGUGGUAUCGACAAGCGAACC 162    
+                               a uCAUCAgUCACUucaUGCUGACAAUCAucuACAGACCGGUCACUUGAUCUACCAGUGCGGUGGUAUCGACAAGCGAACC
+             Scaffold2 6427291 ACUCAUCAGUCACUUCAUGCUGACAAUCAUCUACAGACCGGUCACUUGAUCUACCAGUGCGGUGGUAUCGACAAGCGAACC 6427371
+                               ********************************************************************************* PP
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     163 AUCGAGAAGUUCGAGAAGGUUGGUGACAUCUCCCCCGAUCGCGCCUUGCUaUuccaCAUCGAAUUCCcCGUCGAAUUCCCU 243    
+                               AUCGAGAAGUUCGAGAAGGUUGGUGACAUCUCCCCCGAUCGCGCCUUGCUaUuccaCAUCGAAUUCCcCGUCGAAUUCCCU
+             Scaffold2 6427372 AUCGAGAAGUUCGAGAAGGUUGGUGACAUCUCCCCCGAUCGCGCCUUGCUAUUCCACAUCGAAUUCCCCGUCGAAUUCCCU 6427452
+                               ********************************************************************************* PP
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     244 CCcuCGCGAuaCGCuCUGCGCCCGCUuCUCCCGAGUCcCAAAAuUUUUGCGGUuCGACCGuaAuUUUUUUuGGUGGGGCAU 324    
+                               C ++CGCGA+aCGCuCUGCGCCCGCUuCUCCCGAGUCcCAAAA+UUUUGCGGUuCGACCGuaAuUUUUUU GGUGGGGCAU
+             Scaffold2 6427453 CUUCCGCGACACGCUCUGCGCCCGCUUCUCCCGAGUCCCAAAAAUUUUGCGGUUCGACCGUAAUUUUUUU-GGUGGGGCAU 6427532
+                               **************************************************************99988776.********** PP
+
+                               :::::::::::::::::::::::::::::::::::::::::::::::::.::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     325 uUACCCCGCCaCUCGgGcGACGUUGGACAAAGCCCUGAUCCCUGCACAC.AAAAACACCAAACCCUCUUGGCGCGCAUCaU 404    
+                               uUACCCCGCCaCUCGgGcGACGUUGGAC  AGCCCUGA CCCUGCACAC AAAAACACCAAACCCUCUUGGCGCG   CaU
+             Scaffold2 6427533 UUACCCCGCCACUCGGGCGACGUUGGACG-AGCCCUGAACCCUGCACACaAAAAACACCAAACCCUCUUGGCGCG---CAU 6427609
+                               ***************************97.69*****************88999*********************...688 PP
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     405 CACGUGGUucaCaaCAGAcgCUaACcGguuCAACAAuAGGAAGCCGCUGAGCUCGGuAAGGGUUCCUUCAAGUACGCCUGG 485    
+                               CACGUGGUucaCaaCAGAc+CUaAC GguuCAACAAuAGGAAGCCGCUGAGCUCGGuAAGGGUUCCUUCAAGUACGCCUGG
+             Scaffold2 6427610 CACGUGGUUCACAACAGACACUAACAGGUUCAACAAUAGGAAGCCGCUGAGCUCGGUAAGGGUUCCUUCAAGUACGCCUGG 6427690
+                               99******************************************************************************* PP
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     486 GUCCUUGACAAGCUCAAGGCCGAGCGUGAGCGUGGUAUCACCAUCGAcAUUGCcCUCUGGAAGUUCGAGACUCCCCGCUAC 566    
+                               GUCCUUGACAAGCUCAAGGCCGAGCGUGAGCGUGGUAUCACCAUCGA+AUUGC+CUCUGGAAGUUCGAGACUCCCCGCUAC
+             Scaffold2 6427691 GUCCUUGACAAGCUCAAGGCCGAGCGUGAGCGUGGUAUCACCAUCGAUAUUGCUCUCUGGAAGUUCGAGACUCCCCGCUAC 6427771
+                               ********************************************************************************* PP
+
+                               :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     567 UAUGUCACCGUCAUUGGUAUGUcGCuGucgucuCucUCacuCauGUCUCacCaCUAACaAUCaACA 632    
+                               UAUGUCACCGUCAUUGGUAUGUcGC+ uc+ucuCucUCa uCa+GUCUCa+Ca UAACaAUCaACA
+             Scaffold2 6427772 UAUGUCACCGUCAUUGGUAUGUCGCCCUCAUCUCUCUCAAUCACGUCUCAUCAUUAACAAUCAACA 6427837
+                               **************************************************************9975 PP
+
+>> Scaffold3  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (2) ?     0.042   16.1   0.0 hmm      468      568 ..     4896877     4896777 - .. 0.66     - 0.53
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     468 UCCUUCAAGUACGCCUGGGUCCUUGACAAGCUCAAGGCCGAGCGUGAGCGUGGUAUCACCAUCGAcAUUGCcCUCUGGAAG 548    
+                               U C UC AGUA G   G G C UUGACAAG      G  GAGCG  AGCGUGGUAUCACCAU   cA UGC+C C    AG
+             Scaffold3 4896877 UUCCUCGAGUAUG---GUGCCAUUGACAAGGCUCCCGAGGAGCGAAAGCGUGGUAUCACCAUUUCCACUGCUCACAUCGAG 4896800
+                               3344566666654...55788899***9987666667789*******************************9988766666 PP
+
+                               :::......::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     549 UUC......GAGACUCCCCGCUACUA 568    
+                               U C      GA A    CCGC ACUA
+             Scaffold3 4896799 UACucuaccGACAA---CCGCCACUA 4896777
+                               64411111123232...233333333 PP
+
+>> Scaffold2  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (3) ?     0.048   15.9   0.0 hmm      438      541 ..     3187913     3188016 + .. 0.85     - 0.54
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     438 CAAuAGGAAGCCGCUGAGCUCGGuAAGGGUUCCUUCAAGUACGCCUGGGUCCUUGACAAGCUCAAGGCCGAGCGUGAGCGU 518    
+                               C A  G AAGC G   AG   GG+AAG   UC UU       GC UGGGUC U GAC AG   A  G  GAGCG GA CG 
+             Scaffold2 3187913 CGAAGGCAAGCUGAAAAGUCUGGCAAGCAGUCUUUUGCUCUUGCAUGGGUCAUGGACCAGAGAAGUGAAGAGCGAGAACGC 3187993
+                               44556778999999999*9*********99999999999999********************9999*************** PP
+
+                               ::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     519 GGUAUCACCAUCGAcAUUGCcCU 541    
+                               GG  U ACCAU GAcAU GCc  
+             Scaffold2 3187994 GGCGUGACCAUUGACAUCGCCAC 3188016
+                               *****************998754 PP
+
+>> Scaffold7  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (4) ?      0.17   14.1   0.0 hmm       78      309 ..     2145448     2145215 - .. 0.65     - 0.54
+
+                               :::::::::::....:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna      78 GGGUauuCAUC....AgUCACUucaUGCUGACAAUCAucuACAGACCGGUCACUUGAUCUACCAGUGCGGUGGUAUCGACA 154    
+                               GGG au C UC    AgUC C uc UGC  A A UC  +uA AGA  G U     GA CU  CAGUG       A  GAC 
+             Scaffold7 2145448 GGGGAUCCGUCggggAGUCCCAUCGUGCGUAGAGUCCGUUAGAGAUUGAU-----GAGCUGACAGUG-------AAAGACU 2145380
+                               34444444444222256777888889999999999999999999888765.....555566677776.......4567777 PP
+
+                               :::::::::::::::::::::::::::........::::::::::::::::::::::::::::....:::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     155 AGCGAACCAUCGAGAAGUUCGAGAAGG........UUGGUGACAUCUCCCCCGAUCGCGCCUU....GCUaUuccaCAUCG 223    
+                                G GAA CAU GAGA G   GAGA           U  G   CAUC  CC C A  GCG   U    GCU  uc  CA C 
+             Scaffold7 2145379 UGGGAA-CAUGGAGAGGGAAGAGAGACuccuacucUCCGAAUCAUCCGCCGCAACUGCGUUAUcuccGCUGGUCAGCA-CC 2145301
+                               777766.58889988887777765433111111112233344555555555555555553222222255666666665.44 PP
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     224 AAUUCCcCGUCGAAUUCCCUCCcuCGCGAuaCGCuCUGCGCCCGCUuCUCCCGAGUCcCAAAAuUUUUGCGGUuCGACCGu 304    
+                               AAU     GUCG  U  CC  Cc C C A++CGCuC  CG CCGCU CUC C AGUC CAA    U  G G U CG    u
+             Scaffold7 2145300 AAUCAUGGGUCGCUUGACCCUCCGCACCACCCGCUCAUCGUCCGCUCCUCUCAAGUCUCAAUUCAUACGGGCUACGUAUAU 2145220
+                               6777778899999999999999999**********************************9877666666666666655555 PP
+
+                               ::::: CS
+  FSSC_TEF1-665-bp.fna     305 aAuUU 309    
+                               aA UU
+             Scaffold7 2145219 AAAUU 2145215
+                               55554 PP
+
+>> Scaffold7  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (5) ?      0.56   12.4   0.0 hmm      298      505 ..      573210      573407 + .. 0.69     - 0.51
+
+                              ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna    298 CGACCGuaAuUUUUUUuGGUGGGGCAUuUACCCCGCCaCUCGgGcGACGUUGGACAAAGCCCUGAUCCCUGCACACAAAAACA 380   
+                              C ACCGu Au UU    GGU   GC UuUACC  GCC+ U   G+G  GU G A      CC GAUC   G   ACAA   CA
+             Scaffold7 573210 CCACCGUCAUAUU----GGUC-AGCUUUUACCGAGCCGUUAUAGAG-UGUCGUA------CCCGAUCG--GGUGACAAUUCCA 573278
+                              5556665554443....3333.356677777777777665544443.2333333......34455543..3333444444444 PP
+
+                              ::::::::......::::::::::::::::::::::::::::::::::::::::::::::::::...:::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna    381 CCAAACCC......UCUUGGCGCGCAUCaUCACGUGGUucaCaaCAGAcgCUaACcGguuCAAC...AAuAGGAAGCCGCUGA 454   
+                               CAA  CC      U UUG C  G AUC+  ACGUG  u  C+  A A g    Cc guuC AC    A  G  AG C CUGA
+             Scaffold7 573279 UCAAUGCCgaggauUAUUGAC--GAAUCGGAACGUGAGUGUCGGAACAAGA--UCCAGUUCCACgacCAAUGAGAG-CCCUGA 573356
+                              444433331111116666654..5788888999998777666655444433..34444444443110333344445.459*** PP
+
+                              ::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna    455 GCUCGGuAAGGGUUCCUUCAAGUACGCCUGGGUCCUUGACAAGCUCAAGGC 505   
+                              GCUCGG+ AGGG   CUU A GU  G CU G  C UUG C A  UCAAGG 
+             Scaffold7 573357 GCUCGGCGAGGGCCACUUAACGUUAGGCUUGCACUUUGUCUAUUUCAAGGU 573407
+                              ***********************************************9984 PP
+
+>> Scaffold1  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (6) ?       4.9    9.3   0.0 hmm      150      293 ..     6008452     6008603 + .. 0.71     - 0.57
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     150 CGACAAGCGAACCAUCGAGAAGUUCGAGAAGGUUGGUGACAUCUCCCCCGAUCGCGCCUUGCUaUuccaCAUCGAAUUCCc 230    
+                               C  CAAGC   CC   GAGAAGUUCG  A   U GGUGACA    CCCC A C CG CUU     +c+aC UCG    C  
+             Scaffold1 6008452 CUUCAAGCCUGCCUAUGAGAAGUUCGCCAGCCUGGGUGACAAGAUCCCCAAGCUCGUCUUCACCACCUACUUCGGUGACAU 6008532
+                               5567889999999999************9999*************************999887777777777777666666 PP
+
+                               ::::::::::.....::::::::::::::::::::...::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     231 CGUCGAAUUC.....CCUCCcuCGCGAuaCGCuCU...GCGCCCGCUuCUCCCGAGUCcCAAAAuUUUUGC 293    
+                               CGUC A   C     CCUCC++C C A   G uCU   G G CC C uC  CC  GUCc  AA   U  GC
+             Scaffold1 6008533 CGUCCACAACcucgaCCUCCUCCCCAAGGAGGUCUaugGUGUCCACAUCGACCUUGUCCGCAACCCUGAGC 6008603
+                               66654433221111134444444444444444444222556677777777677666666666555555555 PP
+
+>> Scaffold1  
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (7) ?       9.7    8.3   0.1 hmm       55      249 ..     6008632     6008801 + .. 0.66     - 0.62
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna      55 AACCCCGCCuGguauCUCGGGCGGGGUauuCAUCAgUCACUucaUGCUGACAAUCAucuACAGACCGGUCACUUGAUCUAC 135    
+                                 CC  G CuG + uCUC G CGG GU  uC  C g C C  caU   GA  A CA c   A  C  G             
+             Scaffold1 6008632 CCCCAAGACUGUCCUCUCUGCCGGUGUCGUCGACGGCCGCAACAUCUGGAAGACCAACCUGAAGCGCGC------------ 6008700
+                               445556677788888888888888888888888888887777777666666666655443333222222............ PP
+
+                               ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     136 CAGUGCGGUGGUAUCGACAAGCGAACCAUCGAGAAGUUCGAGAAGGUUGGUGACAUCUCCCCCGAUCGCGCCUUGCUaUuc 216    
+                               CA  G       AU G C AG    CCAUC AGAAG UCG  AAGG   GUG CAU  CC CC     C C U  CU  uc
+             Scaffold1 6008701 CAUCG-----AGAUUGUCGAGACUGCCAUCCAGAAGCUCGGCAAGGACCGUGUCAUUGCCGCCACCUCCUCUUCCCUCCUC 6008776
+                               22222.....2345555666777789*****************************99887776544444444444555555 PP
+
+                               ::::::::::::::::::::::::::::::::: CS
+  FSSC_TEF1-665-bp.fna     217 caCAUCGAAUUCCcCGUCGAAUUCCCUCCcuCG 249    
+                               caCA        CcC UC  A UC C CC  CG
+             Scaffold1 6008777 CACA--------CCCCUCACACUCUCGCCAGCG 6008801
+                               5555........333355555555544444444 PP
+
+
+
+Internal HMM-only pipeline statistics summary: (run for model(s) with zero basepairs)
+--------------------------------------------------------------------------------------
+Query model(s):                                          1  (632 consensus positions)
+Target sequences:                                        9  (94873116 residues searched)
+Windows passing local HMM SSV      filter:            5558  (0.05872); expected (0.02)
+Windows passing local HMM MSV bias filter:            3213  (0.03406); expected (0.02)
+Windows passing local HMM Viterbi  filter:              77  (0.0008657); expected (0.001)
+Windows passing local HMM Forward  filter:               8  (0.0001053); expected (1e-05)
+Total HMM hits reported:                                 7  (1.673e-05)
+
+# CPU time: 5.11u 0.03s 00:00:05.14 Elapsed: 00:00:01.22
+//
+[ok]
