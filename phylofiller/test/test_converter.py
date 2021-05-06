@@ -147,6 +147,11 @@ class IOTests(TestCase):
             obs = easle2sam(parse_easel_output(self.fp_infernal))
             self.assertEqual(exp, obs)
 
+    def test_parse_easel_output_format113(self):
+        obs = parse_easel_output(
+            get_data_path('easel2sam/SLCC2753.RF014787.cmout'))
+        # just test if the new format (since 1.1.3) can be parsed to 17 hits
+        self.assertEqual(obs.shape[0], 17)
 
 class KrakenTests(TestCase):
     def setUp(self):

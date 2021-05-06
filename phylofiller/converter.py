@@ -59,6 +59,9 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
     -------
     Pandas.DataFrame holding all information of the infernal run.
     """
+    step_lines_alignment = 6
+    line_offset_endaln = 1
+
     program_info = dict()
     with open(fp_input, 'r') as f:
         lines = f.readlines()
@@ -71,6 +74,11 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                 if ' INFERNAL ' in line:
                     program_info['software'] = line.split()[1]
                     program_info['software version'] = line.split()[2]
+                    # 1.1.2 --> 2.1.1 --> 2*10^0 + 1*10^1 + 1*10^2 --> 112
+                    version_fingerprint = sum(map(lambda x: int(x[0])*(10**x[1]), zip(reversed(program_info['software version'].split('.')), range(10))))
+                    if version_fingerprint >= 113:
+                        step_lines_alignment = 7
+                        line_offset_endaln = 2
                 elif ' query CM file:' in line:
                     program_info['fp_query'] = line.split(':')[1].strip()
                 elif ' target sequence database:' in line:
@@ -85,18 +93,24 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                 # target name is in the >> line
                 hit_info['target name'] = line[3:].strip()
 
-                alignment_line_number = line_number + 6
+                alignment_line_number = line_number + step_lines_alignment
                 query_sequence = ""
                 target_sequence = ""
+                #print("start", step_lines_alignment, alignment_line_number, lines[alignment_line_number])
                 while alignment_line_number + 2 < len(lines):
                     query_sequence += lines[alignment_line_number].split()[2]
+                    #print(alignment_line_number+1, lines[alignment_line_number][:30])
                     target_sequence += lines[
                         alignment_line_number+2].split()[2]
-                    alignment_line_number += 6
-                    if lines[alignment_line_number-1].startswith('>> '):
+                    alignment_line_number += step_lines_alignment
+                    #print(alignment_line_number+1, lines[alignment_line_number][:30])
+                    if lines[alignment_line_number-line_offset_endaln].startswith('>> '):
                         break
-                    elif lines[alignment_line_number+1].startswith(
-                            'Internal HMM-only pipeline statistics summary'):
+                    elif ((lines[alignment_line_number+(2-line_offset_endaln)].startswith(
+                            'Internal HMM-only pipeline statistics summary')) or
+                          (lines[alignment_line_number+(2-line_offset_endaln)].startswith(
+                            'Internal CM pipeline statistics summary'))
+                         ):
                         break
                 hit_info['query sequence'] = query_sequence
                 hit_info['target sequence'] = target_sequence
