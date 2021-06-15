@@ -1,0 +1,318 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.3 (Nov 2019)
+# Copyright (C) 2019 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         Incoming/RF01478_rli47.cm
+# target sequence database:              Workdir//bowtie2index/SLCC2753.fasta
+# number of worker threads:              128
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       rli47  [CLEN=508]
+Accession:   RF01478
+Description: Listeria sRNA rli47
+Hit scores:
+ rank     E-value  score  bias  sequence     start     end   mdl trunc   gc  description
+ ----   --------- ------ -----  ---------- ------- -------   --- ----- ----  -----------
+  (1) !  5.5e-188  632.0   0.5  SLCC2755_1 2274320 2274829 +  cm    no 0.41  Listeria monocytogenes strain SLCC2755
+ ------ inclusion threshold ------
+  (2) ?      0.12   14.8   0.0  SLCC2755_1 2274589 2274541 -  cm    no 0.33  Listeria monocytogenes strain SLCC2755
+  (3) ?      0.15   14.5   0.1  SLCC2755_1  399424  399354 -  cm    no 0.30  Listeria monocytogenes strain SLCC2755
+  (4) ?      0.16   14.4   0.2  SLCC2755_1 2763610 2763678 +  cm    no 0.32  Listeria monocytogenes strain SLCC2755
+  (5) ?      0.35   13.2   0.0  SLCC2755_1  322030  322093 +  cm    no 0.38  Listeria monocytogenes strain SLCC2755
+  (6) ?         1   11.7   0.1  SLCC2755_1 1497528 1497459 -  cm    no 0.27  Listeria monocytogenes strain SLCC2755
+  (7) ?       1.8   10.9   0.4  SLCC2755_1 1070771 1070865 +  cm    no 0.29  Listeria monocytogenes strain SLCC2755
+  (8) ?       2.1   10.6   0.7  SLCC2755_1   20452   20372 -  cm    no 0.27  Listeria monocytogenes strain SLCC2755
+  (9) ?       2.3   10.5   0.2  SLCC2755_1 1454686 1454618 -  cm    no 0.28  Listeria monocytogenes strain SLCC2755
+ (10) ?       3.2   10.0   0.0  SLCC2755_1 1370433 1370336 -  cm    no 0.32  Listeria monocytogenes strain SLCC2755
+ (11) ?       4.4    9.6   0.0  SLCC2755_1  852172  852266 +  cm    no 0.37  Listeria monocytogenes strain SLCC2755
+ (12) ?       4.6    9.5   0.0  SLCC2755_1  538706  538821 +  cm    no 0.40  Listeria monocytogenes strain SLCC2755
+ (13) ?       5.3    9.3   0.0  SLCC2755_1  399004  398914 -  cm    no 0.32  Listeria monocytogenes strain SLCC2755
+ (14) ?       8.7    8.6   4.7  SLCC2755_1  582681  582847 +  cm    no 0.31  Listeria monocytogenes strain SLCC2755
+ (15) ?         9    8.6   0.0  SLCC2755_1 2609305 2609241 -  cm    no 0.32  Listeria monocytogenes strain SLCC2755
+ (16) ?       9.7    8.5   0.0  SLCC2755_1 2493640 2493601 -  cm    no 0.22  Listeria monocytogenes strain SLCC2755
+ (17) ?        10    8.4   6.6  SLCC2755_1  683519  683652 +  cm    no 0.28  Listeria monocytogenes strain SLCC2755
+
+
+Hit alignments:
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !  5.5e-188  632.0   0.5  cm        1      508 []     2274320     2274829 + .. 1.00    no 0.41
+
+                                                                                                                 NC
+                     ::::::::::::::::::::::::::::::{{-{{{{{------------{{{{{{--{,<<<<<<._______>>>>>>{{{{{---{{{ CS
+       rli47       1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAAAcucGGuGUACAaGCuGa.UUUUUUCuCaGCuuuGuCAUAuGC 90     
+                     UAUAUAUA+AGUACAACGAACAAAUAAAAGGUGA:GCGAAUGAAACAAACU:GGUGUACAAGCUGA UUUUUUCUCAGCUUUGUCAUAUGC
+  SLCC2755_1 2274320 UAUAUAUAAAGUACAACGAACAAAUAAAAGGUGAUGCGAAUGAAACAAACUUGGUGUACAAGCUGAuUUUUUUCUCAGCUUUGUCAUAUGC 2274410
+                     ******************************************************************8889999****************** PP
+
+                                                                                                                 NC
+                     {{-{.---{{{{{{{{{--{{{{{---{{{{{,,<<<<<---<<<<<<<-<<-<<------<<<<-<<-<____>->>->>>>----->>- CS
+       rli47      91 CgGC.AAACguCuGguGAAGGaccUUAguGuCAAgcaacuAcgGuuaGcUuaCaGGAGGAAGgCGAGGAGUAUACGCCGCGcCAAGGACuu 180    
+                     C:GC AAAC:UCUG:UGAAGGA::UUA:UGUCAA:CA:CUAC:GUUAGCUUACAGGAGGAAG:CGAGGAGUAUACGCCGCG:CAAGGACUU
+  SLCC2755_1 2274411 CGGCaAAACGUCUGGUGAAGGAUUUUAGUGUCAAGCAGCUACGGUUAGCUUACAGGAGGAAGGCGAGGAGUAUACGCCGCGUCAAGGACUU 2274501
+                     ****999************************************************************************************ PP
+
+                                                                                                                 NC
+                     >>->>>>>>>-->>>>>,[[[[[[[[[,,,,,<<-<<<-<<<<<-<<<<<<<<<<_________________>>>>>>>>>>->>>>>--- CS
+       rli47     181 uacgCuaaCcUAguugcAGGaagaCGGAAUUUCGUuaCGuCGCuCguuuacCaauAUUuUuAUCCUCACUACauuGguaaacAaGCGaAUA 271    
+                     UACGCUAAC:UAG:UG:AGGAA:ACGGAAUUUCGUUACGUCGCUC:UUUA:CAAUAUUUUUAUCCUCACUACAUUG:UAAA:AAGCGAAUA
+  SLCC2755_1 2274502 UACGCUAACUUAGUUGUAGGAAGACGGAAUUUCGUUACGUCGCUCGUUUAUCAAUAUUUUUAUCCUCACUACAUUGGUAAAUAAGCGAAUA 2274592
+                     ******************************************************************************************* PP
+
+                                                   v                                                             NC
+                     -->>>->>,,,,,,,,,,(((-----(((((((((((---((((<<<-<<<<<<<<-<<<<_________>>>>->->>>>>>>>>>,,<< CS
+       rli47     272 AAGuaUCGUAUCAUUcAUGGCCACUAuucaagCaaGuUACgGGCGCuCacuuacuCGcaaGuUAGAAUAUCuugAGAaguaaguaGCAAGa 362    
+                     AAGUAUCGUAUCAUU+AUGGCCACUAUU:A :CAAGUUAC:GGCGCUCA:UUA:UCG:AAG UAGAAUAUCUU:AGAA:UAA:UAGCAAGA
+  SLCC2755_1 2274593 AAGUAUCGUAUCAUUUAUGGCCACUAUUUAUGCAAGUUACGGGCGCUCAUUUAUUCGUAAGCUAGAAUAUCUUGAGAAGUAAGUAGCAAGA 2274683
+                     ******************************************************************************************* PP
+
+                                         v                                                                       NC
+                     ________>>)))))))))))))))---))),,,]]]]]]]]]<-<<<<<---<<______>>-->>>>>->,}}}}}}}}}}----}}}} CS
+       rli47     363 cAAAgAAUuCGCCcaCuuGcuugaaAAUGCCUCACCGucuuCCGAauGuuGUAuGUUUAUUCaGAaaCauCCAGaCacgguCCGGCCCacC 453    
+                     CAAAGAAUUCGCC:ACUUG: U:AAAAUGCCUCACCGU:UUCCGAAUGUUGUAUGUUUAUUCAGAAACAUCCAGACA:::UCCGGCCCA:C
+  SLCC2755_1 2274684 CAAAGAAUUCGCCUACUUGUUUGAAAAUGCCUCACCGUUUUCCGAAUGUUGUAUGUUUAUUCAGAAACAUCCAGACAUGGUCCGGCCCAUC 2274774
+                     ******************************************************************************************* PP
+
+                                                                             NC
+                     }}}}}-}}}}}}-}}}}}}--}}-}}}}------------}}}}}-}}::::::: CS
+       rli47     454 aGacGAGcGGCaAGaCaaGCUCaUCCgaAAAGAAAAACCcCGCguGaCGAAaUcG 508    
+                     AGA:GAG:GGCAAGACAAGCUCAUCC:AAAAGAAAAACCCCGC:UGACGAAAUCG
+  SLCC2755_1 2274775 AGAUGAGUGGCAAGACAAGCUCAUCCGAAAAGAAAAACCCCGCGUGACGAAAUCG 2274829
+                     ******************************************************* PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (2) ?      0.12   14.8   0.0  cm      220      268 ..     2274589     2274541 - .. 1.00    no 0.33
+
+                           v    v                         v    v       NC
+                     <<<<<-<<<<<<<<<<_________________>>>>>>>>>>->>>>> CS
+       rli47     220 uCGCuCguuuacCaauAUUuUuAUCCUCACUACauuGguaaacAaGCGa 268    
+                     UCGCU  UUUA CAAU U  U A   U A  A AUUG UAAA  AGCGA
+  SLCC2755_1 2274589 UCGCUUAUUUACCAAUGUAGUGAGGAUAAAAAUAUUGAUAAACGAGCGA 2274541
+                     ************************************************* PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (3) ?      0.15   14.5   0.1  cm        1      508 []      399424      399354 - .. 0.94    no 0.30
+
+                                                      vv                           vv            NC
+                    ::::::::::::::::::::::::::::::{{-{{{{{------------~~~~~~~----}}}}}-}}::::::: CS
+       rli47      1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAAAc*[439]*ACCcCGCguGaCGAAaUcG 508   
+                    UA A A AUA  ACAAC+AA  AAUA   G:: A  CG AUGA   AAA           CCG  U :: A   CG
+  SLCC2755_1 399424 UAAAAAAAUAACACAACAAAU-AAUAGCGGACUAUGCGGAUGAUUUAAAA*[  3]*UUUCCGAUUAGUAACUGCG 399354
+                    *****************9998.8999*******************99998....6..5678*************** PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (4) ?      0.16   14.4   0.2  cm        1      508 []     2763610     2763678 + .. 0.79    no 0.32
+
+                                                     v    v                         v    v         NC
+                     :::::::::::::::::.:::::::::::::{{-{{{{{------------~~~~~~~----}}}}}-}}::::::: CS
+       rli47       1 UAUAUAUAuAgUACAAc.gAACAAAuAAAAGGuGacGCGAAUGAaAcAAAc*[439]*ACCcCGCguGaCGAAaUcG 508    
+                     UA A  U U GUA AA   AAC  A AAAA G  :CG :AAUGA A+AAA        ACC : CG:G C  AAUC 
+  SLCC2755_1 2763610 UACACGUUUUGUAAAAAaUAACGCAAAAAAAG--GCGCAAAUGAUAAAAAA*[  1]*ACCAUUCGCGCCAUAAUCA 2763678
+                     *********99988765156666666666666..77889999999999987....7..566788888889******* PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (5) ?      0.35   13.2   0.0  cm        1      508 []      322030      322093 + .. 0.96    no 0.38
+
+                                                                                            NC
+                    ::::::::::::::::::::::::::::::{{-{{{{{-----------~~~~~~~}}}}}-}}::::::: CS
+       rli47      1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAAA*[444]*CGCguGaCGAAaUcG 508   
+                    U  A A  +AG A AA  AAC AA AA  GGU :C:::A UGAAA+AAA       :::G:GAC A  U+ 
+  SLCC2755_1 322030 UCCAGAACAAGAAUAAAUAAC-AAGAAGUGGUCGCCGAAGUGAAAAAAA*[  1]*UCGGUGACCACUUUU 322093
+                    ********************9.789999*****************9997....6..*************** PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (6) ?         1   11.7   0.1  cm        1      508 []     1497528     1497459 - .. 0.90    no 0.27
+
+                                                    v                             v         NC
+                     ::::::::::::::::::::::::::::::{{-{{{{{----------~~~~~~~}}}}}-}}::::::: CS
+       rli47       1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAA*[445]*CGCguGaCGAAaUcG 508    
+                       UA AU   GUACAA  AA A AUAAA  :  A:::G A   AACA        C:::UG :  A  CG
+  SLCC2755_1 1497528 AUUAAAUGCUGUACAAUUAAAAUAUAAAGCAAAAGAUGGAGA-AACAU*[  8]*CAUCUGAUUGAUACG 1497459
+                     **************************************8754.44444....7..*************** PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (7) ?       1.8   10.9   0.4  cm        1      508 []     1070771     1070865 + .. 0.84    no 0.29
+
+                                                       v  v                         v v            NC
+                     ::::::::::::::::::::::::::::::{{-{{{.{{------------~~~~~~~----}}}}}-}}::::::: CS
+       rli47       1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacG.CGAAUGAaAcAAAc*[439]*ACCcCGCguGaCGAAaUcG 508    
+                       UA  UA A U  AAC AA  AA AAA GG GA G   AAUGAAA+AAA+          C  C U  CG A  + 
+  SLCC2755_1 1070771 CUUAAGUACAAUGUAACUAAAUAAAAAAGGGGGAUGaAGAAUGAAAAAAAU*[ 25]*UUACUACUUCUCGGAGCUU 1070865
+                     ****************************99999987366999999999999....8..3333447788********* PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (8) ?       2.1   10.6   0.7  cm        1      508 []       20452       20372 - .. 0.84    no 0.27
+
+                                                     v                          v            NC
+                   ::::::::::::::::::::::::::::::{{-{{{{{------------~~~~~~~-}}}}}-}}::::::: CS
+       rli47     1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAAAc*[442]*cCGCguGaCGAAaUcG 508  
+                   UAUA AU UAGU  AA +AA AA  AAA  :  A :CG A  AAA AAA        +CG: U  :   A +G
+  SLCC2755_1 20452 UAUAAAUUUAGUCGAAGAAAAAAUCAAAGAAGAACGCGCAAAAAAUAAAG*[ 15]*UCGUCUAUUUUCACUG 20372
+                   ************99987777766666666666788999999999988875....8..5*************** PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (9) ?       2.3   10.5   0.2  cm        1      508 []     1454686     1454618 - .. 0.89    no 0.28
+
+                                                    v     v                    v     v         NC
+                     ::::::::::::::::::::::::::::::{{-{{{{{------------~~~~~~~-}}}}}-}}::::::: CS
+       rli47       1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAAAc*[442]*cCGCguGaCGAAaUcG 508    
+                     UAU U  A+   ACAA  AA   A AAAA : G::GC AAUG   + AA        C GC::  :G   U+G
+  SLCC2755_1 1454686 UAUUUCAAACUAACAAACAAUUUAAAAAAAUAGUUGCUAAUGCGUAGAAA*[  3]*CUGCGAAAAGGCUUUG 1454618
+                     **************************************999876554443....5..49************** PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+ (10) ?       3.2   10.0   0.0  cm        1      508 []     1370433     1370336 - .. 0.84    no 0.32
+
+                                                          v                                 v               NC
+                     ::::::::::::::::::::::::::::::{{-{{{{{------------{~~~~~~~}------------}}}}}-}}::::::: CS
+       rli47       1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAAAcu*[429]*aAAAGAAAAACCcCGCguGaCGAAaUcG 508    
+                      A    UA+A    A    A  AAU AAAG:U A:GC   U   A+AA  U       AA AGAAAAA C  GC:U A: AAA CG
+  SLCC2755_1 1370433 CACUACUAAAACUAAUUUGAUUAAUCAAAGCU-AUGCGUGUUUCAAAAGAU*[ 20]*AAUAGAAAAAGCAAGCGUUAGUAAAGCG 1370336
+                     **********999999999*************.899987777666666655....6..899************************* PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+ (11) ?       4.4    9.6   0.0  cm        1      508 []      852172      852266 + .. 0.86    no 0.37
+
+                                                        vv                               vv              NC
+                    ::::::::::::::::::::::::::::::{{-{{{{{------------~~~~~~~------------}}}}}-}}::::::: CS
+       rli47      1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAAAc*[431]*AAAGAAAAACCcCGCguGaCGAAaUcG 508   
+                      UAUAU UA U CA  G  C A U AAAGG: A: + AA GA AC           AAAGA AAAC C   :U :CG AAUCG
+  SLCC2755_1 852172 CUUAUAUUUAAUUCACUGGCC-AGUCAAAGGUAAAUUCAAAGACACU---*[ 24]*AAAGAUAAACGC--GUUCGCGCAAUCG 852266
+                    **************9988777.889999******9877777766654.......9..678888888866..69*********** PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+ (12) ?       4.6    9.5   0.0  cm        1      508 []      538706      538821 + .. 0.90    no 0.40
+
+                                                     v                                                            NC
+                    ::::::::::::::::::::::::::::::{{-{{{{{------------{{{{{{--{,~~~~~~~~~~~~~}--}}-}}}}---------- CS
+       rli47      1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAAAcucGGuGUACA*[19]**[392]*GCUCaUCCgaAAAGAAAAAC 491   
+                    UAU  AUAU G A          A AA  G::G C :GA   AAA+A A+::GG:  A                CU : CC::AAA   AAAC
+  SLCC2755_1 538706 UAUCAAUAUGGCAAUUAU-CUUCAAAAUCGCUGACUGGACACAAAAAGAUGUGGAGAA--*[13]**[ 10]*-CUUUACCACAAAUUCAAAC 538804
+                    ******999987644333.3345677889*************************9987.....*......9...57899************** PP
+
+                          v           NC
+                    --}}}}}-}}::::::: CS
+       rli47    492 CcCGCguGaCGAAaUcG 508   
+                      C: G  ::G   U+G
+  SLCC2755_1 538805 UACCGGGUGGGCGCUUG 538821
+                    ***************** PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+ (13) ?       5.3    9.3   0.0  cm        1      508 []      399004      398914 - .. 0.93    no 0.32
+
+                                                  v                         v        NC
+                    ::::::::::::::::::::::::::::::{{-{{{{{----~~~~~~~}}}}}-}}::::::: CS
+       rli47      1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUG*[451]*CGCguGaCGAAaUcG 508   
+                    UA  UAUA+A U  AA + A A A   AA  UGA:G:   U         :C:U A  AAAU G
+  SLCC2755_1 399004 UAAGUAUAAAAUCUAAUACAAACAAGUAAUUUGAUGGGUUUU*[ 34]*UCCGUAAUUAAAUAG 398914
+                    **************9999999999999999******987665....9..89************* PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+ (14) ?       8.7    8.6   4.7  cm        1      508 []      582681      582847 + .. 0.82    no 0.31
+
+                                                                         v      vvvvvv           vvvvvvvvv        NC
+                    ::::::::::::::::::::::::::::::{{-{{{{{------------{{{{{{--{,<<<<<<______~~~~~>>>>>>{{{{       CS
+       rli47      1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAAAcucGGuGUACAaGCuGaUUUUUU*[1]*uCaGCuuuGu       83    
+                    U UA A  UAG A AA +A    A AA A :U    CGAAUGA  CAA +UCG : UA:A++C +   UUU               U
+  SLCC2755_1 582681 UUUACAAUUAGAAGAAAAAGG-UAAAAUAAAUA---CGAAUGAUCCAAUUUCGAAGUAUAUACCUGACUUUC*[7]*---------U       582756
+                    ******999999988865554.45555666555...9***********************999988777665..5...........4       PP
+
+                            vvv      v                               NC
+                    ~~~~~~~}}}}}--}}-}}}}------------}}}}}-}}::::::: CS
+       rli47     84 *[384]*aCaaGCUCaUCCgaAAAGAAAAACCcCGCguGaCGAAaUcG 508   
+                           AC A:   :  CGA  A  A  AC CCG   GA: AAAU+G
+  SLCC2755_1 582757 *[ 53]*ACCAAACUUAGCGAGUAAUAUGACACCG---GAUCAAAUUG 582847
+                    ....8..66677777899****************9...5667****** PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+ (15) ?         9    8.6   0.0  cm        1      508 []     2609305     2609241 - .. 0.93    no 0.32
+
+                                                                                NC
+                     ::::::::::::::::::::::::::::::{{-{{{{~~~~~~~}}}}-}}::::::: CS
+       rli47       1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGC*[457]*GCguGaCGAAaUcG 508    
+                     UAUAU U +  UA  AC AA A   AAAA G: A G:       :C U :CG AA +G
+  SLCC2755_1 2609305 UAUAUUUGAUUUAUCACCAAAAUGGAAAAUGUUAGGA*[ 14]*UCUUUGCGUAACUG 2609241
+                     ********************************99885....8..68899********* PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+ (16) ?       9.7    8.5   0.0  cm        1      508 []     2493640     2493601 - .. 0.71    no 0.22
+
+                                                                NC
+                     :::::::::::::::::.:::::::::::::~~~~~~~:::: CS
+       rli47       1 UAUAUAUAuAgUACAAc.gAACAAAuAAAAG*[474]*aUcG 508    
+                     UAUAU UAUA UACAA  GAA AAAU            AU G
+  SLCC2755_1 2493640 UAUAUUUAUAAUACAAAaGAAGAAAUUG---*[  8]*AUAG 2493601
+                     *************997513444444444.......7..6778 PP
+
+>> SLCC2755_1  Listeria monocytogenes strain SLCC2755
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+ (17) ?        10    8.4   6.6  cm        1      508 []      683519      683652 + .. 0.75    no 0.28
+
+                                                     vv  v                vv        v            v                NC
+                    ::::::::::::::::::::::::::::::{{-{{{{{------------{{{{{{--{,<<<<<<____~~~~~~>>>>>>{{{{{---{{{ CS
+       rli47      1 UAUAUAUAuAgUACAAcgAACAAAuAAAAGGuGacGCGAAUGAaAcAAAcucGGuGUACAaGCuGaUUUU*[ 3]*uCaGCuuuGuCAUAuGC 90    
+                    UAU U U UA UAC A   A  AA A  AG:UGA+:: A UGAAA+AAA+        : AGCU  UUUU        AGCUU G::A AUGC
+  SLCC2755_1 683519 UAUUUUUUUAUUACUAA--AAUAAAAGGAGAUGAACAUAUUGAAAAAAAU-------UGCAGCUAUUUUU*[12]*GCAGCUUUGCUA-AUGC 683607
+                    *************9984..4446666778888877777777777766665.......588****996665...7..889999999997.7999 PP
+
+                     v        v             vv                 v  vv           NC
+                    {{-~~~~~~~}}}}}-}}}}}}--}}-}}}}------------}}}}}-}}::::::: CS
+       rli47     91 CgG*[367]*cGGCaAGaCaaGCUCaUCCgaAAAGAAAAACCcCGCguGaCGAAaUcG 508   
+                    C          GGCAA::C A:  ++        GAAAAA  + ::  GA:  AA CG
+  SLCC2755_1 683608 CUU*[  4]*UGGCAAAGCGACUGUU--------GAAAAAAGUUUG--GAUUUAAGCG 683652
+                    965....6..69*********87643........555555544443..8999999*** PP
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (508 consensus positions)
+Target sequences:                                                1  (5932586 residues searched)
+Target sequences re-searched for truncated hits:                 1  (2540 residues re-searched)
+Windows   passing  local HMM SSV           filter:            5682  (0.6425); expected (0.35)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:             691  (0.09865); expected (0.005)
+Windows   passing  local HMM Forward  bias filter:             198  (0.02872); expected (0.005)
+Windows   passing glocal HMM Forward       filter:             103  (0.01979); expected (0.005)
+Windows   passing glocal HMM Forward  bias filter:              86  (0.01648); expected (0.005)
+Envelopes passing glocal HMM envelope defn filter:              88  (0.008654); expected (0.005)
+Envelopes passing  local CM  CYK           filter:              28  (0.001799); expected (0.0001)
+Total CM hits reported:                                         17  (0.0003174); includes 0 truncated hit(s)
+
+# CPU time: 48.69u 4.72s 00:00:53.41 Elapsed: 00:00:04.43
+//
+[ok]
