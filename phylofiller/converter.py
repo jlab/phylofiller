@@ -2,6 +2,7 @@ import pandas as pd
 from itertools import groupby
 from Bio.Seq import Seq
 import collections
+import sys
 
 
 def easel_table2pd(lines) -> pd.DataFrame:
@@ -76,7 +77,7 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                     program_info['software version'] = line.split()[2]
                     # 1.1.2 --> 2.1.1 --> 2*10^0 + 1*10^1 + 1*10^2 --> 112
                     version_fingerprint = sum(map(lambda x: int(x[0])*(10**x[1]), zip(reversed(program_info['software version'].split('.')), range(10))))
-                    if version_fingerprint >= 113:
+                    if (version_fingerprint >= 113) and (version_fingerprint < 114):
                         step_lines_alignment = 7
                         line_offset_endaln = 2
                 elif ' query CM file:' in line:
@@ -99,11 +100,14 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                 #print("start", step_lines_alignment, alignment_line_number, lines[alignment_line_number])
                 while alignment_line_number + 2 < len(lines):
                     query_sequence += lines[alignment_line_number].split()[2]
-                    #print(alignment_line_number+1, lines[alignment_line_number][:30])
+                    # print("hier", step_lines_alignment,
+                    #     line_offset_endaln,
+                    #     alignment_line_number+1,
+                    #     lines[alignment_line_number+1][:30], file=sys.stderr)
                     target_sequence += lines[
                         alignment_line_number+2].split()[2]
                     alignment_line_number += step_lines_alignment
-                    #print(alignment_line_number+1, lines[alignment_line_number][:30])
+                    # print(alignment_line_number+1, lines[alignment_line_number][:30], file=sys.stderr)
                     if lines[alignment_line_number-line_offset_endaln].startswith('>> '):
                         break
                     elif ((lines[alignment_line_number+(2-line_offset_endaln)].startswith(
