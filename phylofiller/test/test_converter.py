@@ -153,6 +153,7 @@ class IOTests(TestCase):
         # just test if the new format (since 1.1.3) can be parsed to 17 hits
         self.assertEqual(obs.shape[0], 17)
 
+
 class KrakenTests(TestCase):
     def setUp(self):
         self.fp_report = get_data_path('KB0060_c.k2report')
