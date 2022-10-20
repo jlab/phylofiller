@@ -30,6 +30,8 @@ def easel_table2pd(lines) -> pd.DataFrame:
         if row_num == 1:
             # this is the ---- line and no content
             continue
+        if row_num > 1 and line.startswith('#'):
+            continue  # as this is a trailing comment line
         row = []
         for col_num, (start, stop) in enumerate(column_positions):
             if col_num == 0:
@@ -44,6 +46,11 @@ def easel_table2pd(lines) -> pd.DataFrame:
         data=rows[1:],
         columns=rows[0],
         index=range(len(rows)-1))
+
+    for col in ['mdl from', 'mdl to', 'seq from', 'seq to', 'pass']:
+        table[col] = table[col].astype(int)
+    for col in ['gc', 'bias', 'score', 'E-value']:
+        table[col] = table[col].astype(float)
 
     return table
 
