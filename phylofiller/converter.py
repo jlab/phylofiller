@@ -51,9 +51,11 @@ def easel_table2pd(lines) -> pd.DataFrame:
     # saveguard the user from sorting implicitely lexiographically when
     # sorting numerically is intended
     for col in ['mdl from', 'mdl to', 'seq from', 'seq to', 'pass']:
-        table[col] = table[col].astype(int)
+        if col in table.columns:
+            table[col] = table[col].astype(int)
     for col in ['gc', 'bias', 'score', 'E-value']:
-        table[col] = table[col].astype(float)
+        if col in table.columns:
+            table[col] = table[col].astype(float)
 
     if (any(pd.Series(table.columns).value_counts() > 1)):
         print("warning: column names are not unique!", file=sys.stderr)
