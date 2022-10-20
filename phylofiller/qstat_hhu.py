@@ -61,7 +61,7 @@ def main():
 
     status = get_status(q_dict)
 
-    print (status)
+    print(status)
 
 
 if __name__ == '__main__':

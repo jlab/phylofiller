@@ -21,7 +21,7 @@ def parse_qstat(lines):
             m = p.match(entry.rstrip())
             q_dict[m.groups()[0].lower()] = m.groups()[1]
 
-    return(q_dict)
+    return (q_dict)
 
 
 def get_status(q_dict):
@@ -39,7 +39,7 @@ def get_status(q_dict):
     except KeyError:
         status = "failed"
 
-    return(status)
+    return (status)
 
 
 def main():
