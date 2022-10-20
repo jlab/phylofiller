@@ -47,10 +47,16 @@ def easel_table2pd(lines) -> pd.DataFrame:
         columns=rows[0],
         index=range(len(rows)-1))
 
+    # automatic datatype conversion from "object" to int and float to
+    # saveguard the user from sorting implicitely lexiographically when
+    # sorting numerically is intended
     for col in ['mdl from', 'mdl to', 'seq from', 'seq to', 'pass']:
         table[col] = table[col].astype(int)
     for col in ['gc', 'bias', 'score', 'E-value']:
         table[col] = table[col].astype(float)
+
+    if (any(pd.Series(table.columns).value_counts() > 1)):
+        print("warning: column names are not unique!", file=sys.stderr)
 
     return table
 
