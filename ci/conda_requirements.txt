@@ -1,7 +1,0 @@
-nose
-pep8
-flake8
-pandas
-scikit-bio
-snakemake
-biopython
