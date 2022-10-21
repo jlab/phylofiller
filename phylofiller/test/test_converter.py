@@ -38,7 +38,7 @@ class IOTests(TestCase):
 
         with open(get_data_path('easel2sam/exp_parse_easle_output.txt')) as f:
             exp = ''.join(f.readlines())
-        assert_frame_equal(_str2pd(exp), obs)
+        assert_frame_equal(_str2pd(exp), obs.astype(str))
 
         obs = parse_easel_output(self.fp_nohit)
         self.assertEqual(obs.shape[0], 0)
@@ -54,7 +54,7 @@ class IOTests(TestCase):
         exp = (';rank;;E-value;score;bias;mdl;mdl from;mdl to;;seq from;seq to'
                ';;acc;trunc;gc\n0;(1);!;4.2e-23;84.6;0.1;hmm;710;930;.];284427'
                ';284630;+ ..;0.86;-;0.44\n')
-        assert_frame_equal(_str2pd(exp), obs)
+        assert_frame_equal(_str2pd(exp), obs.astype(str))
 
         obs = easel_table2pd(
             [" rank     E-value  score  bias  sequence    start     end   mdl "
@@ -66,7 +66,7 @@ class IOTests(TestCase):
         exp = (';rank;;E-value;score;bias;;sequence;start;end;;mdl;trunc;gc;;d'
                'escription\n0;(1);!;2.7e-265;885.0;0.0;;Scaffold3;2966345;2965'
                '521;-;hmm;-;0.54;;-\n')
-        assert_frame_equal(_str2pd(exp), obs)
+        assert_frame_equal(_str2pd(exp), obs.astype(str))
 
         obs = easel_table2pd(
             [" rank     E-value  score  bias  sequence    start     end   mdl "
@@ -91,7 +91,7 @@ class IOTests(TestCase):
              "    - 0.51  -",
              "  (9) ?      0.31   10.8   0.0  Scaffold4 3659261 3659088 - hmm "
              "    - 0.56  -",
-             " (10) ?         1    9.1   0.0  Scaffold6 1338065 1337981 - hmm "
+             " (10) ?       1.1    9.1   0.0  Scaffold6 1338065 1337981 - hmm "
              "    - 0.53  -",
              " (11) ?       1.7    8.3   0.8  Scaffold2 3674449 3674606 + hmm "
              "    - 0.59  -"])
@@ -103,13 +103,13 @@ class IOTests(TestCase):
             ';2315839;+;hmm;-;0.51;;-\n3;(4);!;1.6e-26;94.6;0.0;;Scaffold6;133'
             '7459;1336642;-;hmm;-;0.55;;-\n4;(5);!;5.9e-08;33.1;0.0;;Scaffold4'
             ';2314349;2314665;+;hmm;-;0.53;;-\n5;(6);!;0.0059;16.5;0.0;;Scaffo'
-            'ld1;5920205;5920315;+;hmm;-;0.60;;-\n6;(7);?;0.037;13.9;0.1;;Scaf'
+            'ld1;5920205;5920315;+;hmm;-;0.6;;-\n6;(7);?;0.037;13.9;0.1;;Scaf'
             'fold4;478876;478690;-;hmm;-;0.55;;-\n7;(8);?;0.071;12.9;0.0;;Scaf'
             'fold4;2314870;2315072;+;hmm;-;0.51;;-\n8;(9);?;0.31;10.8;0.0;;Sca'
-            'ffold4;3659261;3659088;-;hmm;-;0.56;;-\n9;(10);?;1;9.1;0.0;;Scaff'
-            'old6;1338065;1337981;-;hmm;-;0.53;;-\n10;(11);?;1.7;8.3;0.8;;Scaf'
-            'fold2;3674449;3674606;+;hmm;-;0.59;;-\n')
-        assert_frame_equal(_str2pd(exp), obs)
+            'ffold4;3659261;3659088;-;hmm;-;0.56;;-\n9;(10);?;1.1;9.1;0.0;;Sca'
+            'ffold6;1338065;1337981;-;hmm;-;0.53;;-\n10;(11);?;1.7;8.3;0.8;;Sc'
+            'affold2;3674449;3674606;+;hmm;-;0.59;;-\n')
+        assert_frame_equal(_str2pd(exp), obs.astype(str))
 
     def test_create_CIGAR(self):
         with self.assertRaisesRegex(
@@ -152,6 +152,7 @@ class IOTests(TestCase):
             get_data_path('easel2sam/SLCC2753.RF014787.cmout'))
         # just test if the new format (since 1.1.3) can be parsed to 17 hits
         self.assertEqual(obs.shape[0], 17)
+
 
 class KrakenTests(TestCase):
     def setUp(self):
