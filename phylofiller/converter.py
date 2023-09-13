@@ -51,9 +51,11 @@ def easel_table2pd(lines) -> pd.DataFrame:
     # saveguard the user from sorting implicitely lexiographically when
     # sorting numerically is intended
     for col in ['mdl from', 'mdl to', 'seq from', 'seq to', 'pass']:
-        table[col] = table[col].astype(int)
+        if col in table.columns:
+            table[col] = table[col].astype(int)
     for col in ['gc', 'bias', 'score', 'E-value']:
-        table[col] = table[col].astype(float)
+        if col in table.columns:
+            table[col] = table[col].astype(float)
 
     if (any(pd.Series(table.columns).value_counts() > 1)):
         print("warning: column names are not unique!", file=sys.stderr)
@@ -89,8 +91,13 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                     program_info['software'] = line.split()[1]
                     program_info['software version'] = line.split()[2]
                     # 1.1.2 --> 2.1.1 --> 2*10^0 + 1*10^1 + 1*10^2 --> 112
-                    version_fingerprint = sum(map(lambda x: int(x[0])*(10**x[1]), zip(reversed(program_info['software version'].split('.')), range(10))))
-                    if (version_fingerprint >= 113) and (version_fingerprint < 114):
+                    version_fingerprint = sum(
+                        map(lambda x: int(x[0])*(10**x[1]),
+                            zip(reversed(
+                                program_info['software version'].split('.')),
+                                range(10))))
+                    if (version_fingerprint >= 113) and \
+                       (version_fingerprint < 114):
                         step_lines_alignment = 7
                         line_offset_endaln = 2
                 elif ' query CM file:' in line:
@@ -110,7 +117,8 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                 alignment_line_number = line_number + step_lines_alignment
                 query_sequence = ""
                 target_sequence = ""
-                #print("start", step_lines_alignment, alignment_line_number, lines[alignment_line_number])
+                # print("start", step_lines_alignment, alignment_line_number,
+                # lines[alignment_line_number])
                 while alignment_line_number + 2 < len(lines):
                     query_sequence += lines[alignment_line_number].split()[2]
                     # print("hier", step_lines_alignment,
@@ -120,14 +128,17 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                     target_sequence += lines[
                         alignment_line_number+2].split()[2]
                     alignment_line_number += step_lines_alignment
-                    # print(alignment_line_number+1, lines[alignment_line_number][:30], file=sys.stderr)
-                    if lines[alignment_line_number-line_offset_endaln].startswith('>> '):
+                    # print(alignment_line_number+1,
+                    #       lines[alignment_line_number][:30], file=sys.stderr)
+                    if lines[alignment_line_number -
+                             line_offset_endaln].startswith('>> '):
                         break
-                    elif ((lines[alignment_line_number+(2-line_offset_endaln)].startswith(
-                            'Internal HMM-only pipeline statistics summary')) or
-                          (lines[alignment_line_number+(2-line_offset_endaln)].startswith(
-                            'Internal CM pipeline statistics summary'))
-                         ):
+                    elif ((lines[alignment_line_number +
+                                 (2 - line_offset_endaln)].startswith(
+                            'Internal HMM-only pipeline statistics summary'))
+                          or (lines[alignment_line_number +
+                                    (2 - line_offset_endaln)].startswith(
+                            'Internal CM pipeline statistics summary'))):
                         break
                 hit_info['query sequence'] = query_sequence
                 hit_info['target sequence'] = target_sequence
