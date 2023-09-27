@@ -15,10 +15,10 @@ def dpElements(fig):
     width_rect = []
     height_rect = []
     for c in fig.get_axes()[0]._children:
-        if type(c) == matplotlib.lines.Line2D:
+        if isinstance(c, matplotlib.lines.Line2D):
             xs_lines.extend(list(c._x))
             ys_lines.extend(list(c._y))
-        elif type(c) == matplotlib.patches.Rectangle:
+        elif isinstance(c, matplotlib.patches.Rectangle):
             xs_rect.append(c._x0)
             ys_rect.append(c._y0)
             width_rect.append(c._width)
