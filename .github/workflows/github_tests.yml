@@ -25,11 +25,12 @@ jobs:
         # prone than conda while being completely compatible with the conda CLI
         use-mamba: true
         mamba-version: "*"
-    - name: Install conda packages
-      # The `-l` is needed so conda environment activation works correctly
-      shell: bash -l {0}
-      run: |
-                mamba install --file environment.yml
+        environment-file: environment.yml
+    # - name: Install conda packages
+    #   # The `-l` is needed so conda environment activation works correctly
+    #   shell: bash -l {0}
+    #   run: |
+    #             mamba install --file environment.yml
 
     # - name: Install dependencies
     #   run: |
