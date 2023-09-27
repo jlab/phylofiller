@@ -6,6 +6,7 @@ import sys
 from tqdm import tqdm
 import re
 
+
 def easel_table2pd(lines, verbose=True) -> pd.DataFrame:
     headers = []
     for m in re.finditer(r"\S+", lines[2]):
@@ -42,7 +43,6 @@ def easel_table2pd(lines, verbose=True) -> pd.DataFrame:
 
     if (any(pd.Series(table.columns).value_counts() > 1)) and verbose:
         print("warning: column names are not unique!", file=sys.stderr)
-
 
     return table
 

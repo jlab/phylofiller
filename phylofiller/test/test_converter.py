@@ -17,7 +17,7 @@ def _str2pd(input):
     table = table.fillna("")
     try:
         table.index = list(map(int, table.index))
-    except:
+    except ValueError:
         pass
     return table
 
@@ -56,8 +56,8 @@ class IOTests(TestCase):
              "  (1) !   4.2e-23   84.6   0.1 hmm      710      930 .]      284"
              "427      284630 + .. 0.86     - 0.44"], verbose=False)
         exp = (';rank;;E-value;score;bias;mdl;mdl from;mdl to;;seq from;seq to'
-               ';;;acc;trunc;gc\n0;(1);!;4.2e-23;84.6;0.1;hmm;710;930;.];284427'
-               ';284630;+;..;0.86;-;0.44\n')
+               ';;;acc;trunc;gc\n0;(1);!;4.2e-23;84.6;0.1;hmm;710;930;.];'
+               '284427;284630;+;..;0.86;-;0.44\n')
         assert_frame_equal(_str2pd(exp), obs.astype(str))
 
         obs = easel_table2pd(
@@ -148,7 +148,8 @@ class IOTests(TestCase):
     def test_easle2sam(self):
         with open(self.fp_sam, 'r') as f:
             exp = ''.join(f.readlines())
-            obs = easle2sam(parse_easel_output(self.fp_infernal, verbose=False))
+            obs = easle2sam(parse_easel_output(
+                self.fp_infernal, verbose=False))
             self.assertEqual(exp, obs)
 
     def test_parse_easel_output_format113(self):
