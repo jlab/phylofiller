@@ -27,6 +27,7 @@ jobs:
         use-mamba: true
         mamba-version: "*"
         environment-file: environment.yml
+        python-version: "3.10"
     - name: Lint with flake8
       # Bash shells do not use ~/.profile or ~/.bashrc so these shells need to
       # be explicitely declared as shell: bash -el {0} on steps that need to be
