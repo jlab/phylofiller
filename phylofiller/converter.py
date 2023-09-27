@@ -182,8 +182,8 @@ def create_CIGAR(row_reference: str, row_read: str) -> str:
     # of alignment operators
     assert len(row_reference) == len(row_read), \
         'Reference and read string have different length.'
-    assert type(row_reference) == str, "Reference is not of type str."
-    assert type(row_read) == str, "Read is not of type str."
+    assert isinstance(row_reference, str), "Reference is not of type str."
+    assert isinstance(row_read, str), "Read is not of type str."
 
     operations = []
     for i in range(len(row_reference)):

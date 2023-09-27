@@ -15,19 +15,37 @@ jobs:
       uses: actions/checkout@v3
     - name: Set up Python
       uses: actions/setup-python@v3
-    - name: Install dependencies
-      run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        $CONDA/bin/conda env update --file environment.yml --name base
+    - name: setup conda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        # This uses *miniforge*, rather than *minicond*. The primary difference
+        # is that the defaults channel is not enabled at all
+        miniforge-version: latest
+        # These properties enable the use of mamba, which is much faster and far
+        # less error prone than conda while being completely compatible with the
+        # conda CLI
+        use-mamba: true
+        mamba-version: "*"
+        environment-file: environment.yml
+        python-version: "3.10"
     - name: Lint with flake8
+      # Bash shells do not use ~/.profile or ~/.bashrc so these shells need to
+      # be explicitely declared as shell: bash -el {0} on steps that need to be
+      # properly activated (or use a default shell). This is because bash shells
+      # are executed with bash --noprofile --norc -eo pipefail {0} thus ignoring
+      # updated on bash profile files made by conda init bash. See Github
+      # Actions Documentation and thread.
+      shell: bash -el {0}
       run: |
-        $CONDA/bin/flake8 phylofiller/
+        flake8 phylofiller/
     - name: run python tests
+      shell: bash -el {0}
       run: |
-        $CONDA/bin/nosetests phylofiller --with-doctest --with-coverage
+        nosetests phylofiller --with-doctest --with-coverage
     - name: convert coverage
+      shell: bash -el {0}
       run: |
-        $CONDA/bin/coverage lcov
+        coverage lcov
     - name: send coverage report
       uses: coverallsapp/github-action@master
       with:
