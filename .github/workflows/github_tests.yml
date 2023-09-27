@@ -37,8 +37,10 @@ jobs:
     #     # $CONDA is an environment variable pointing to the root of the miniconda directory
     #     $CONDA/bin/conda env update --file environment.yml --name base
     - name: Lint with flake8
+      shell: bash -el {0}
       run: |
-        $CONDA/bin/flake8 phylofiller/
+        which -a flake8; env
+        flake8 phylofiller/
     - name: run python tests
       run: |
         $CONDA/bin/nosetests phylofiller --with-doctest --with-coverage
