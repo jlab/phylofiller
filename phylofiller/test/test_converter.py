@@ -15,6 +15,10 @@ def _str2pd(input):
     table = table.rename(columns={
         c: '' for c in table.columns if c.startswith('Unnamed: ')})
     table = table.fillna("")
+    try:
+        table.index = list(map(int, table.index))
+    except ValueError:
+        pass
     return table
 
 
@@ -28,7 +32,7 @@ class IOTests(TestCase):
         pass
 
     def test_parse_easel_output(self):
-        obs = parse_easel_output(self.fp_infernal)
+        obs = parse_easel_output(self.fp_infernal, verbose=False)
         self.assertEqual('INFERNAL', obs['software'].iloc[0])
         self.assertEqual('1.1.2', obs['software version'].iloc[0])
         self.assertEqual('Markergenes/FSSC/allFSSC.cm',
@@ -50,10 +54,10 @@ class IOTests(TestCase):
              " ----   --------- ------ ----- --- -------- --------    --------"
              "--- -----------      ---- ----- ----",
              "  (1) !   4.2e-23   84.6   0.1 hmm      710      930 .]      284"
-             "427      284630 + .. 0.86     - 0.44"])
+             "427      284630 + .. 0.86     - 0.44"], verbose=False)
         exp = (';rank;;E-value;score;bias;mdl;mdl from;mdl to;;seq from;seq to'
-               ';;acc;trunc;gc\n0;(1);!;4.2e-23;84.6;0.1;hmm;710;930;.];284427'
-               ';284630;+ ..;0.86;-;0.44\n')
+               ';;;acc;trunc;gc\n0;(1);!;4.2e-23;84.6;0.1;hmm;710;930;.];'
+               '284427;284630;+;..;0.86;-;0.44\n')
         assert_frame_equal(_str2pd(exp), obs.astype(str))
 
         obs = easel_table2pd(
@@ -62,10 +66,10 @@ class IOTests(TestCase):
              " ----   --------- ------ -----  --------- ------- -------   --- "
              "----- ----  -----------",
              "  (1) !  2.7e-265  885.0   0.0  Scaffold3 2966345 2965521 - hmm "
-             "    - 0.54  -"])
-        exp = (';rank;;E-value;score;bias;;sequence;start;end;;mdl;trunc;gc;;d'
-               'escription\n0;(1);!;2.7e-265;885.0;0.0;;Scaffold3;2966345;2965'
-               '521;-;hmm;-;0.54;;-\n')
+             "    - 0.54  -"], verbose=False)
+        exp = (";rank;;E-value;score;bias;sequence;start;end;;mdl;trunc;gc;des"
+               "cription\n0;(1);!;2.7e-265;885.0;0.0;Scaffold3;2966345;2965521"
+               ";-;hmm;-;0.54;-\n")
         assert_frame_equal(_str2pd(exp), obs.astype(str))
 
         obs = easel_table2pd(
@@ -94,21 +98,21 @@ class IOTests(TestCase):
              " (10) ?       1.1    9.1   0.0  Scaffold6 1338065 1337981 - hmm "
              "    - 0.53  -",
              " (11) ?       1.7    8.3   0.8  Scaffold2 3674449 3674606 + hmm "
-             "    - 0.59  -"])
+             "    - 0.59  -"], verbose=False)
         exp = (
-            ';rank;;E-value;score;bias;;sequence;start;end;;mdl;trunc;gc;;desc'
-            'ription\n0;(1);!;2.7e-265;885.0;0.0;;Scaffold3;2966345;2965521;-;'
-            'hmm;-;0.54;;-\n1;(2);!;1.1e-243;813.4;0.0;;Scaffold3;2965391;2964'
-            '591;-;hmm;-;0.53;;-\n2;(3);!;1.7e-34;120.9;0.0;;Scaffold4;2315121'
-            ';2315839;+;hmm;-;0.51;;-\n3;(4);!;1.6e-26;94.6;0.0;;Scaffold6;133'
-            '7459;1336642;-;hmm;-;0.55;;-\n4;(5);!;5.9e-08;33.1;0.0;;Scaffold4'
-            ';2314349;2314665;+;hmm;-;0.53;;-\n5;(6);!;0.0059;16.5;0.0;;Scaffo'
-            'ld1;5920205;5920315;+;hmm;-;0.6;;-\n6;(7);?;0.037;13.9;0.1;;Scaf'
-            'fold4;478876;478690;-;hmm;-;0.55;;-\n7;(8);?;0.071;12.9;0.0;;Scaf'
-            'fold4;2314870;2315072;+;hmm;-;0.51;;-\n8;(9);?;0.31;10.8;0.0;;Sca'
-            'ffold4;3659261;3659088;-;hmm;-;0.56;;-\n9;(10);?;1.1;9.1;0.0;;Sca'
-            'ffold6;1338065;1337981;-;hmm;-;0.53;;-\n10;(11);?;1.7;8.3;0.8;;Sc'
-            'affold2;3674449;3674606;+;hmm;-;0.59;;-\n')
+            ';rank;;E-value;score;bias;sequence;start;end;;mdl;trunc;gc;desc'
+            'ription\n0;(1);!;2.7e-265;885.0;0.0;Scaffold3;2966345;2965521;-;'
+            'hmm;-;0.54;-\n1;(2);!;1.1e-243;813.4;0.0;Scaffold3;2965391;2964'
+            '591;-;hmm;-;0.53;-\n2;(3);!;1.7e-34;120.9;0.0;Scaffold4;2315121'
+            ';2315839;+;hmm;-;0.51;-\n3;(4);!;1.6e-26;94.6;0.0;Scaffold6;133'
+            '7459;1336642;-;hmm;-;0.55;-\n4;(5);!;5.9e-08;33.1;0.0;Scaffold4'
+            ';2314349;2314665;+;hmm;-;0.53;-\n5;(6);!;0.0059;16.5;0.0;Scaffo'
+            'ld1;5920205;5920315;+;hmm;-;0.6;-\n6;(7);?;0.037;13.9;0.1;Scaf'
+            'fold4;478876;478690;-;hmm;-;0.55;-\n7;(8);?;0.071;12.9;0.0;Scaf'
+            'fold4;2314870;2315072;+;hmm;-;0.51;-\n8;(9);?;0.31;10.8;0.0;Sca'
+            'ffold4;3659261;3659088;-;hmm;-;0.56;-\n9;(10);?;1.1;9.1;0.0;Sca'
+            'ffold6;1338065;1337981;-;hmm;-;0.53;-\n10;(11);?;1.7;8.3;0.8;Sc'
+            'affold2;3674449;3674606;+;hmm;-;0.59;-\n')
         assert_frame_equal(_str2pd(exp), obs.astype(str))
 
     def test_create_CIGAR(self):
@@ -144,14 +148,22 @@ class IOTests(TestCase):
     def test_easle2sam(self):
         with open(self.fp_sam, 'r') as f:
             exp = ''.join(f.readlines())
-            obs = easle2sam(parse_easel_output(self.fp_infernal))
+            obs = easle2sam(parse_easel_output(
+                self.fp_infernal, verbose=False))
             self.assertEqual(exp, obs)
 
     def test_parse_easel_output_format113(self):
         obs = parse_easel_output(
-            get_data_path('easel2sam/SLCC2753.RF014787.cmout'))
+            get_data_path('easel2sam/SLCC2753.RF014787.cmout'), verbose=False)
         # just test if the new format (since 1.1.3) can be parsed to 17 hits
         self.assertEqual(obs.shape[0], 17)
+
+    def test_infernalColOffset(self):
+        with open(get_data_path('mini.tbl')) as f:
+            lines = f.readlines()
+        obs = easel_table2pd(lines, verbose=False)
+        self.assertEqual(obs.shape[0], 21)
+        self.assertEqual(obs.shape[1], 18)
 
 
 class KrakenTests(TestCase):

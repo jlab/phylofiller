@@ -3,49 +3,33 @@ from itertools import groupby
 from Bio.Seq import Seq
 import collections
 import sys
+from tqdm import tqdm
+import re
 
 
-def easel_table2pd(lines) -> pd.DataFrame:
-    # easel is using a strange tab format. Instead of splitting via a single
-    # del. char like \t columns are aligned for visual inspection. Hints of
-    # column starts/ends are given by the second line with dashes, but it does
-    # not cover ALL columns :-/
-    # Thus, I here try to make a consistent annotation of column fields (-)
-    # and spearators (#)
-    line_fields = lines[1].replace('- ', '-#').replace(' -', '#-').replace(
-        ' ', '-')
-    # leading whitespaces most likely indicate NO empty column.
-    # Thus, I add these positions to the first real column.
-    if line_fields.startswith('#'):
-        line_fields = '-'+line_fields[1:]
-
-    column_positions = []
-    curr_pos = 0
-    for i, field in enumerate(line_fields.split('#')):
-        column_positions.append((curr_pos, curr_pos + len(field)))
-        curr_pos += len(field) + 1
+def easel_table2pd(lines, verbose=True) -> pd.DataFrame:
+    headers = []
+    for m in re.finditer(r"\S+", lines[2]):
+        header_start, header_end = m.start(), m.end()
+        while lines[1][header_start] == "-":
+            header_start -= 1
+        while (header_end < len(lines[0])) and (lines[1][header_end] == "-"):
+            header_end += 1
+        headers.append(lines[0][header_start:header_end].strip())
 
     rows = []
-    for row_num, line in enumerate(lines):
-        if row_num == 1:
-            # this is the ---- line and no content
+    for row_num, line in tqdm(enumerate(lines), disable=not verbose):
+        if row_num <= 1:
             continue
         if row_num > 1 and line.startswith('#'):
             continue  # as this is a trailing comment line
-        row = []
-        for col_num, (start, stop) in enumerate(column_positions):
-            if col_num == 0:
-                row.append(line[:stop].strip())
-            elif col_num+1 == len(column_positions):
-                row.append(line[start-1:].strip())
-            else:
-                row.append(line[start-1:stop].strip())
-        rows.append(row)
+        rows.append(line.rstrip().split())
 
     table = pd.DataFrame(
-        data=rows[1:],
-        columns=rows[0],
-        index=range(len(rows)-1))
+        data=rows,
+        columns=headers,
+        index=range(len(rows))
+        )
 
     # automatic datatype conversion from "object" to int and float to
     # saveguard the user from sorting implicitely lexiographically when
@@ -57,13 +41,13 @@ def easel_table2pd(lines) -> pd.DataFrame:
         if col in table.columns:
             table[col] = table[col].astype(float)
 
-    if (any(pd.Series(table.columns).value_counts() > 1)):
+    if (any(pd.Series(table.columns).value_counts() > 1)) and verbose:
         print("warning: column names are not unique!", file=sys.stderr)
 
     return table
 
 
-def parse_easel_output(fp_input: str) -> pd.DataFrame:
+def parse_easel_output(fp_input: str, verbose=True) -> pd.DataFrame:
     """Parses Infernal (soon also Hmmer) as a pandas DataFrame.
 
     Parameters
@@ -109,7 +93,8 @@ def parse_easel_output(fp_input: str) -> pd.DataFrame:
                 model_clen = line.split()[-1].split('=')[-1].replace(']', '')
             elif line.startswith('>> '):
                 # next three lines will be an overview table
-                hit_info = easel_table2pd(lines[line_number+1:line_number+3+1])
+                hit_info = easel_table2pd(lines[line_number+1:line_number+3+1],
+                                          verbose=verbose)
 
                 # target name is in the >> line
                 hit_info['target name'] = line[3:].strip()

@@ -1,0 +1,31 @@
+#target name         accession query name           accession mdl mdl from   mdl to  seq from    seq to strand trunc pass   gc  bias  score   E-value inc description of target
+#------------------- --------- -------------------- --------- --- -------- -------- --------- --------- ------ ----- ---- ---- ----- ------ --------- --- ---------------------
+chr1                 -         5S_rRNA              RF00001    cm        1      119 228746133 228746015      -    no    1 0.61   0.0  118.9   6.6e-24 !   -
+chr1                 -         5S_rRNA              RF00001    cm        1      119 228748374 228748256      -    no    1 0.61   0.0  118.9   6.6e-24 !   -
+chr1                 -         5S_rRNA              RF00001    cm        1      119 228750615 228750497      -    no    1 0.61   0.0  118.9   6.6e-24 !   -
+chr1                 -         5S_rRNA              RF00001    cm        1      119 228752856 228752738      -    no    1 0.61   0.0  118.9   6.6e-24 !   -
+chr1                 -         5S_rRNA              RF00001    cm        1      119 228755097 228754979      -    no    1 0.61   0.0  118.9   6.6e-24 !   -
+chr1                 -         5S_rRNA              RF00001    cm        1      119 228757312 228757194      -    no    1 0.61   0.0  118.9   6.6e-24 !   -
+chr1                 -         5S_rRNA              RF00001    cm        1      119 228759532 228759414      -    no    1 0.61   0.0  118.9   6.6e-24 !   -
+chr11                 -         U2                   RF00004    cm        1      193  62609281  62609091      -    no    1 0.44   0.0  191.2   9.7e-40 !   -
+chr10                 -         U2                   RF00004    cm        1      193 103124792 103124602      -    no    1 0.45   0.0  179.5   6.2e-37 !   -
+chr17                 -         U2                   RF00004    cm        1      193  41464785  41464594      -    no    1 0.43   0.0  172.6   2.8e-35 !   -
+chr6                 -         tRNA                 RF00005    cm        1       71  28442402  28442329      -    no    1 0.50   0.0   76.8   2.4e-14 !   -
+chr7                 -         tRNA                 RF00005    cm        1       71 149007281 149007352      +    no    1 0.56   0.0   73.9   1.6e-13 !   -
+chr16                -         tRNA                 RF00005    cm        1       71  73512288  73512216      -    no    1 0.51   0.0   73.8   1.7e-13 !   -
+chr19                -         Hammerhead_HH10      RF02277    cm       43      110  48561534  48561600      +    no    1 0.39   0.0   25.9       7.8 ?   -
+chr1                 -         Hammerhead_HH10      RF02277    cm        1      125  87448923  87448817      -    no    1 0.39   0.0   25.8       8.1 ?   -
+chr7                 -         Betaproteobacteria_toxic_sRNA RF02278    cm        1       64  44640963  44640900      -    no    1 0.53   0.0   29.2      0.84 ?   -
+chr6                 -         Betaproteobacteria_toxic_sRNA RF02278    cm        1       64 125477691 125477636      -    no    1 0.52   0.0   28.8       1.1 ?   -
+chr3                 -         Betaproteobacteria_toxic_sRNA RF02278    cm        1       64 122276154 122276069      -    no    1 0.52   0.0   25.7       6.3 ?   -
+chr12                -         Betaproteobacteria_toxic_sRNA RF02278    cm        1       64 106339815 106339752      -    no    1 0.61   0.0   25.6       6.8 ?   -
+chr10                -         TtnuCD1              RF02279   hmm        5       60  35816692  35816639      -     -    6 0.35   0.0   25.8     0.033 ?   -
+chr20                -         TtnuCD1              RF02279   hmm        5       53  24807863  24807912      +     -    6 0.32   0.2   22.0      0.53 ?   -
+#
+# Program:         cmsearch
+# Version:         1.1.3 (Nov 2019)
+# Pipeline mode:   SEARCH
+# Query file:      Rfam/Rfam.cm
+# Target file:     genome/hg19.fa
+# Option settings: /usr/lib/infernal/cmsearch --tblout cmsearch_Rfam/cmsearch.Rfam.hg19.tbl Rfam/Rfam.cm genome/hg19.fa 
+# [ok]
