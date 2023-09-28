@@ -1,0 +1,39 @@
+rule setup_dbcan2:
+    output:
+        cazydb="%s%sdbcan2/CAZy.dmnd" % (config['dirs']['prefix'], config['dirs']['references']),
+        tcdb="%s%sdbcan2/tcdb.dmnd" % (config['dirs']['prefix'], config['dirs']['references']),
+        hmm_tf1=["%s%sdbcan2/tf-1.hmm.%s" % (config['dirs']['prefix'], config['dirs']['references'], ending) for ending in ['h3m', 'h3f', 'h3p', 'h3i']],
+        hmm_tf2=["%s%sdbcan2/tf-2.hmm.%s" % (config['dirs']['prefix'], config['dirs']['references'], ending) for ending in ['h3m', 'h3f', 'h3p', 'h3i']],
+        hmm_stp=["%s%sdbcan2/stp.hmm.%s" % (config['dirs']['prefix'], config['dirs']['references'], ending) for ending in ['h3m', 'h3f', 'h3p', 'h3i']],
+        hmm_dbcan=["%s%sdbcan2/dbCAN.txt.%s" % (config['dirs']['prefix'], config['dirs']['references'], ending) for ending in ['h3m', 'h3f', 'h3p', 'h3i']],
+        test_run="%s%sdbcan2/test_output/overview.txt" % (config['dirs']['prefix'], config['dirs']['references'])
+    log:
+        "%s%s%s/dbcan2.log" % (config['dirs']['prefix'], config['dirs']['logs'], config['stepnames']['setup_references'])
+    benchmark:
+        "%s%s%s/dbcan2.benchmark" % (config['dirs']['prefix'], config['dirs']['benchmarks'], config['stepnames']['setup_references'])
+    conda:
+        "../envs/dbcan2.yaml"
+    params:
+        url='http://bcb.unl.edu/dbCAN2/download/',
+        dbfile_cazy="%s%sdbcan2/CAZyDB.07312018.fa" % (config['dirs']['prefix'], config['dirs']['references']),
+        dbfile_tc="%s%sdbcan2/tcdb.fa" % (config['dirs']['prefix'], config['dirs']['references']),
+        hmm_tf1="%s%sdbcan2/tf-1.hmm" % (config['dirs']['prefix'], config['dirs']['references']),
+        hmm_tf2="%s%sdbcan2/tf-2.hmm" % (config['dirs']['prefix'], config['dirs']['references']),
+        hmm_stp="%s%sdbcan2/stp.hmm" % (config['dirs']['prefix'], config['dirs']['references']),
+        hmm_dbcan="%s%sdbcan2/dbCAN-HMMdb-V8.txt" % (config['dirs']['prefix'], config['dirs']['references']),
+        test_fna="%s%sdbcan2/EscheriaColiK12MG1655.fna" % (config['dirs']['prefix'], config['dirs']['references']),
+    threads:
+        8
+    shell:
+        "pip install run-dbcan==2.0.9 2> '{log}' 1>&2"
+        " && for file in `echo '{params.dbfile_cazy} {params.dbfile_tc} {params.hmm_tf1} {params.hmm_tf2} {params.hmm_stp}  {params.hmm_dbcan}'`; do wget {params.url}Databases/`basename $file` -O $file 2>> {log}; done"
+        " && for file in `echo '{params.test_fna}'`; do wget {params.url}Samples/`basename $file` -O $file 2>> {log}; done"
+        " && diamond makedb --threads {threads} --in {params.dbfile_cazy} -d {output.cazydb} 2>> {log}"
+        " && diamond makedb --threads {threads} --in {params.dbfile_tc} -d {output.tcdb} 2>> {log}"
+        " && hmmpress {params.hmm_tf1} 2>> {log} 1>&2"
+        " && hmmpress {params.hmm_tf2} 2>> {log} 1>&2"
+        " && hmmpress {params.hmm_stp} 2>> {log} 1>&2"
+        " && mv -v {params.hmm_dbcan} `dirname {params.hmm_dbcan}`/dbCAN.txt 2>> {log} 1>&2"
+        " && hmmpress `dirname {params.hmm_dbcan}`/dbCAN.txt 2>> {log} 1>&2"
+        " && sed -i \"s/^call(\['cp'/# call(\['cp'/\" $CONDA_PREFIX/bin/bact_group_many_proteins_many_patterns.py 2>> {log}"
+        " && cd `dirname {params.test_fna}` 2>> {log} && run_dbcan.py --dia_cpu {threads} --hmm_cpu {threads} --hotpep_cpu 1 --tf_cpu {threads} --stp_cpu {threads} {params.test_fna} --db_dir `dirname {output.cazydb}` prok --out_dir `dirname {output.cazydb}`/test_output 2>> {log} 1>&2"

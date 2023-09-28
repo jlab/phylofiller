@@ -6,10 +6,58 @@ rule augustus:
     log:
         "{prefix}%s%s/{organism}.log" % (config['dirs']['logs'], config['stepnames']['augustus'])
     benchmark:
-        "{prefix}%s%s/{organism}.log" % (config['dirs']['benchmarks'], config['stepnames']['augustus'])
+        "{prefix}%s%s/{organism}.benchmark" % (config['dirs']['benchmarks'], config['stepnames']['augustus'])
     conda:
         "../envs/augustus.yaml"
     params:
         species=lambda wildcards: get_augustus_reference_species(wildcards.organism, META, config['projects'][PROJECT])
     shell:
-        "augustus '{input}' --species={params.species} 2> '{log}' > '{output}'"
+        "augustus"
+        " '{input}'"
+        " --species={params.species}"
+        # softmasking: lower case nucleotids in input file will be interpreted
+        #  as repeats, i.e. ignored for prediciton:
+        #  https://github.com/nextgenusfs/augustus/blob/master/README.TXT
+        #  idea from FunGAP: https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bioinformatics/33/18/10.1093_bioinformatics_btx353/2/btx353_supplementary_2017-ms-fungap-supp_v1.4-ref.pdf?Expires=1591099856&Signature=EWfmgZl01UGDbxOGeNCMmorONRTyTfz6h2D8o5l-Lg9STK-Mo8fIIg8Q2sM3KpK2kdFLqm37SztCEn2zv-pGf0~C7L7tSORcE1vt3AXEGNulzzW3FQvMF1pP2YB1-NVkHXjWp9I7TQ1qQmXGcJHrbPRApR3hZQ1mBitH84hBcXgPs6XV~VREcDU8qja-00C12man~8VLjSD-ZboH2vg2WPlLG~~ftq7TmA4kCuijqsMMuAGwRl8P3lJrK06H6H607HU9C~xgBai7iDSWNqt9EjQjANiYrruPs7Xt4cO0-O4miHxtK~fWI-wtc2bhy5iCfEyPSI3YlsiW6L5mHyKIlQ__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA
+        " --softmasking=1"
+        # also inspired from FunGAP: predict genes independently on each strand, allow overlapping genes on opposite strands. This option is turned off by default.
+        " --singlestrand=true"
+        " 2> '{log}' "
+        " > '{output}'"
+
+RM_DB_FILEENDINGS = ["nhr", "nin", "nnd", "nni", "nog", "nsq", "translation"]
+rule repeatmodeler_builddatabase:
+    input:
+        assembly=lambda wildcards: META.loc[wildcards.organism, 'fp_assembly']
+    output:
+        ["{prefix}%s%s/{organism}.%s" % (config['dirs']['intermediate'], config['stepnames']['repeatmodeler_builddatabase'], fileending) for fileending in RM_DB_FILEENDINGS]
+    log:
+        "{prefix}%s%s/{organism}.log" % (config['dirs']['logs'], config['stepnames']['repeatmodeler_builddatabase'])
+    benchmark:
+        "{prefix}%s%s/{organism}.benchmark" % (config['dirs']['benchmarks'], config['stepnames']['repeatmodeler_builddatabase'])
+    conda:
+        "../envs/repeatmodeler.yaml"
+    params:
+        fp_output=lambda wildcards: '%s%s%s/%s' % (wildcards.prefix, config['dirs']['intermediate'], config['stepnames']['repeatmodeler_builddatabase'], wildcards.organism)
+    shell:
+        "BuildDatabase -name {params.fp_output} -engine ncbi {input} 2> {log} 1>&2"
+
+rule repeatmodeler_run:
+    input:
+        #assembly=lambda wildcards: META.loc[wildcards.organism, 'fp_assembly']
+        ["{prefix}%s%s/{organism}.%s" % (config['dirs']['intermediate'], config['stepnames']['repeatmodeler_builddatabase'], fileending) for fileending in RM_DB_FILEENDINGS]
+    output:
+        "{prefix}%s%s/{organism}.stefan" % (config['dirs']['intermediate'], config['stepnames']['repeatmodeler_run'])
+    log:
+        "{prefix}%s%s/{organism}.log" % (config['dirs']['logs'], config['stepnames']['repeatmodeler_run'])
+    benchmark:
+        "{prefix}%s%s/{organism}.benchmark" % (config['dirs']['benchmarks'], config['stepnames']['repeatmodeler_run'])
+    conda:
+        "../envs/repeatmodeler.yaml"
+    params:
+        fp_database=lambda wildcards: '%s%s%s/%s' % (wildcards.prefix, config['dirs']['intermediate'], config['stepnames']['repeatmodeler_builddatabase'], wildcards.organism)
+    threads:
+        4
+    shell:
+        "cd `dirname {output}` 2> {log}"
+        " && RepeatModeler -engine ncbi -pa {threads} -srand 42 -database {params.fp_database} 2>> {log} 1>&2"

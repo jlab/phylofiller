@@ -1,3 +1,3 @@
 organism	fp_assembly	augustus_reference_species
-Aspergillus sydowii	phylofiller/test/data/assembly.fasta	Aspergillus nidulans
-Fusarium solani	IDontExist.fasta	Fusarium graminearum
+Aspergillus_sydowii	phylofiller/test/data/assembly.fasta	Aspergillus nidulans
+Fusarium_solani	IDontExist.fasta	Fusarium graminearum

@@ -1,6 +1,7 @@
 .gitignore
 
 __pycache__/
+*.egg-info/
 
 .snakemake
 .ipynb_checkpoints/
