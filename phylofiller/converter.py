@@ -7,7 +7,8 @@ from tqdm import tqdm
 import re
 
 
-def easel_table2pd(lines, verbose=True, add_header_names=dict()) -> pd.DataFrame:
+def easel_table2pd(lines, verbose=True,
+                   add_header_names=dict()) -> pd.DataFrame:
     """
     Parameters
     ----------
@@ -117,6 +118,7 @@ def parse_easel_output(fp_input: str, verbose=True) -> pd.DataFrame:
                     lines[line_number+1:line_number+3+1],
                     verbose=verbose, add_header_names={
                         1: 'significance', 11: 'target strand',
+                        8: 'mdl truncation', 12: 'seq truncation'})
     # from Infernal documentation, page 22
     # It’s not immediately easy to tell from the “to” coordinate whether the
     # alignment ended internally in the query model or target sequence, versus
@@ -136,7 +138,6 @@ def parse_easel_output(fp_input: str, verbose=True) -> pd.DataFrame:
     # predicted to be missing (extend beyond the end of the target sequence).
     # These two symbols occur just after the “mdl to” column for the query,
     # and after the strand + or - symbol for the target sequence.
-                        8: 'mdl truncation', 12: 'seq truncation'})
                 # target name is in the >> line
                 hit_info['target name'] = line[3:].strip()
 
