@@ -7,7 +7,21 @@ from tqdm import tqdm
 import re
 
 
-def easel_table2pd(lines, verbose=True) -> pd.DataFrame:
+def easel_table2pd(lines, verbose=True,
+                   add_header_names=dict()) -> pd.DataFrame:
+    """
+    Parameters
+    ----------
+    lines : [str]
+        list of lines
+    verbose : Boolean
+        Print warnings
+    add_header_names : dict(Column: Label)
+        Some tables in easel can have unnamed columns. In this cases, you
+        can provide a dictionary with column number as keys and column labels
+        as headers, e.g.
+        {1: 'significance', 11: 'strand'}
+    """
     headers = []
     for m in re.finditer(r"\S+", lines[2]):
         header_start, header_end = m.start(), m.end()
@@ -16,6 +30,13 @@ def easel_table2pd(lines, verbose=True) -> pd.DataFrame:
         while (header_end < len(lines[0])) and (lines[1][header_end] == "-"):
             header_end += 1
         headers.append(lines[0][header_start:header_end].strip())
+
+    for col, label in add_header_names.items():
+        if headers[col] != "":
+            raise ValueError(
+                ("The easel tabel column %i is names '%s', but you try to "
+                 "override this with '%s'.") % (col, headers[col], label))
+        headers[col] = label
 
     rows = []
     for row_num, line in tqdm(enumerate(lines), disable=not verbose):
@@ -93,9 +114,30 @@ def parse_easel_output(fp_input: str, verbose=True) -> pd.DataFrame:
                 model_clen = line.split()[-1].split('=')[-1].replace(']', '')
             elif line.startswith('>> '):
                 # next three lines will be an overview table
-                hit_info = easel_table2pd(lines[line_number+1:line_number+3+1],
-                                          verbose=verbose)
-
+                hit_info = easel_table2pd(
+                    lines[line_number+1:line_number+3+1],
+                    verbose=verbose, add_header_names={
+                        1: 'significance', 11: 'target strand',
+                        8: 'mdl truncation', 12: 'seq truncation'})
+    # from Infernal documentation, page 22
+    # It’s not immediately easy to tell from the “to” coordinate whether the
+    # alignment ended internally in the query model or target sequence, versus
+    # ran all the way (as in a full-length global alignment) to the end(s).
+    # To make this more readily apparent, with each pair of query and target
+    # endpoint coordinates, there’s also a little symbology. For the normal
+    # case of a non-truncated hit: .. means both ends of the alignment ended
+    # internally, and [] means both ends of the alignment were full-length
+    # flush to the ends of the query or target, and [. and .] mean only the
+    # left (5’) or right (3’) end was flush/full length. For truncated hits,
+    # the symbols are the same except that either the first and/or the second
+    # symbol will be a ˜ for the query and target. If the first symbol is ˜
+    # then the left end of the alignment is truncated because the 5’ end of
+    # the hit is predicted to be missing (extend beyond the beginning of the
+    # target sequence). Similarly, if the second symbol is ˜ then the right
+    # end of the alignment is truncated because the 3’ end of the hit is
+    # predicted to be missing (extend beyond the end of the target sequence).
+    # These two symbols occur just after the “mdl to” column for the query,
+    # and after the strand + or - symbol for the target sequence.
                 # target name is in the >> line
                 hit_info['target name'] = line[3:].strip()
 
