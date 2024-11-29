@@ -1,0 +1,6 @@
+channels:
+  - bioconda
+dependencies:
+  - diamond
+  - hmmer =3.1b2
+  - prodigal

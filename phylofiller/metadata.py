@@ -27,7 +27,7 @@ def read_metadata(fp_metadata: str, fp_assemblyprefix: str = None,
     ------
     Diverse erros if misconfigurations are present.
     """
-    RESERVED_COL_NAMES = ['__line_number', '__file_exists']
+    RESERVED_COL_NAMES = ['__line_number', '__file_exists', '__fp_whitespace']
 
     meta = pd.read_csv(fp_metadata, sep="\t", index_col=0)
 
@@ -54,6 +54,15 @@ def read_metadata(fp_metadata: str, fp_assemblyprefix: str = None,
             'metadata. Please fix!\n%s' %
             (ambig_organisms.shape[0], str(ambig_organisms)))
 
+    organisms_withspace = [
+        organism for organism in  meta.index if ' ' in organism]
+    if len(organisms_withspace) > 0:
+        raise ValueError(
+            'The followin %i organism names contain whitespaces in their names'
+            '. This might break some unix based tools. Please replace with e.'
+            'g. "_":\n%s' % (len(organisms_withspace),
+                             "\n".join(organisms_withspace)))
+
     # add assembly prefix if given
     if fp_assemblyprefix is not None:
         meta[COL_FP_ASSEMBLY] = meta[COL_FP_ASSEMBLY].apply(
@@ -68,7 +77,18 @@ def read_metadata(fp_metadata: str, fp_assemblyprefix: str = None,
                 "Cannot find files for following assemblies:\n%s" %
                 str(meta[~meta['__file_exists']]))
 
-    del meta['__line_number']
+    meta['__fp_whitespace'] = meta[COL_FP_ASSEMBLY].apply(lambda x: ' ' in x)
+    whitespace_fps = meta[meta['__fp_whitespace']]
+    if whitespace_fps.shape[0] > 0:
+        raise ValueError(
+            "The following %i filepaths to assemblies contain whitespaces, "
+            "which might brake unix tools. Please replace by e.g. '_'!\n%s" %
+            (whitespace_fps.shape[0], str(whitespace_fps)))
+
+    for col in RESERVED_COL_NAMES:
+        if col in meta.columns:
+            if col not in ['__file_exists']:
+                del meta[col]
 
     return meta
 

@@ -7,6 +7,7 @@ PROJECT = 'fungi'
 META = read_metadata(config['projects'][PROJECT]['fp_metadata'], fp_assemblyprefix=config['projects'][PROJECT]['assembly_prefix'])
 
 include: "rules/snake_annotations"
+include: "rules/snake_references"
 
 rule all:
     input:
