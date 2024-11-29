@@ -56,6 +56,22 @@ class IOTests(TestCase):
             self.exp_md5, obs_md5,
             "one additional sequence, should result in different MD5")
 
+        obs_md5 = get_assembly_checksum(get_data_path(
+            'assembly_with_splitted_entry.fasta'))
+        self.assertEqual(
+            self.exp_md5, obs_md5,
+            "one sequence splitted into two,"
+            "should result in same MD5")
+
+        obs_md5 = get_assembly_checksum(get_data_path(
+            'assembly_simple_multi_line.fasta'))
+        obs2_md5 = get_assembly_checksum(get_data_path(
+            'assembly_simple_single_line.fasta'))
+        self.assertEqual(
+            obs2_md5, obs_md5,
+            "one sequence splitted into two identical,"
+            "should result in same MD5")
+
 
 if __name__ == '__main__':
     main()
